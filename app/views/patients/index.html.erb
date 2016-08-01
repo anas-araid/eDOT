@@ -33,6 +33,7 @@
         <td><%= link_to 'Show', patient %></td>
         <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
         <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Reports', patient_reports_path(patient) %></td>
       </tr>
     <% end %>
   </tbody>
