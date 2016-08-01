@@ -1,6 +1,7 @@
 class Patient < ApplicationRecord
   belongs_to :community_health_worker
   belongs_to :health_center
+  has_many :reports
   validates :name, :surname, :gender, :birthdate, presence:true
   validates :phone, :phone_number => {:format => /^[\d-]*$/}
 
