@@ -35,5 +35,10 @@
   <%= @patient.starting_therapy_day %>
 </p>
 
+<p>
+  <strong>Community Health Worker ID:</strong>
+  <%= @patient.community_health_worker_id %>
+</p>
+
 <%= link_to 'Edit', edit_patient_path(@patient) %> |
 <%= link_to 'Back', patients_path %>

@@ -12,6 +12,7 @@
       <th>Birthdate</th>
       <th>Phone</th>
       <th>Starting therapy day</th>
+      <th>Community Health Worker ID</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -26,6 +27,7 @@
         <td><%= patient.birthdate %></td>
         <td><%= patient.phone %></td>
         <td><%= patient.starting_therapy_day %></td>
+        <td><%= patient.community_health_worker_id %></td>
         <td><%= link_to 'Show', patient %></td>
         <td><%= link_to 'Edit', edit_patient_path(patient) %></td>
         <td><%= link_to 'Destroy', patient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
