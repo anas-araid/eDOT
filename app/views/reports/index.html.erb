@@ -14,15 +14,15 @@
   </thead>
 
   <tbody>
-    <% @reports.each do |report| %>
+    <% @patient.reports.each do |report| %>
       <tr>
         <td><%= report.patient_id %></td>
         <td><%= report.community_health_worker_id %></td>
         <td><%= report.date %></td>
         <td><%= report.health_status %></td>
-        <td><%= link_to 'Show', report %></td>
-        <td><%= link_to 'Edit', edit_report_path(report) %></td>
-        <td><%= link_to 'Destroy', report, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', patient_report_url(report.patient, report) %></td>
+        <td><%= link_to 'Edit', edit_patient_report_url(report.patient, report) %></td>
+        <td><%= link_to 'Destroy', patient_report_url(report.patient, report), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Report', new_report_path %>
+<%= link_to 'New Report', new_patient_report_path %>

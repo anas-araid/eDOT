@@ -1,10 +1,15 @@
 class ReportsController < ApplicationController
+  before_action :set_patient
   before_action :set_report, only: [:show, :edit, :update, :destroy]
 
   # GET /reports
   # GET /reports.json
+  # def index
+  #   @reports = Report.all
+  # end
+
   def index
-    @reports = Report.all
+    @reports = @patient.reports
   end
 
   # GET /reports/1
@@ -15,6 +20,7 @@ class ReportsController < ApplicationController
   # GET /reports/new
   def new
     @report = Report.new
+    #puts @report.inspect
   end
 
   # GET /reports/1/edit
@@ -28,7 +34,7 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       if @report.save
-        format.html { redirect_to @report, notice: 'Report was successfully created.' }
+        format.html { redirect_to patient_report_url(@report.patient, @report), notice: 'Report was successfully created.' }
         format.json { render :show, status: :created, location: @report }
       else
         format.html { render :new }
@@ -42,7 +48,7 @@ class ReportsController < ApplicationController
   def update
     respond_to do |format|
       if @report.update(report_params)
-        format.html { redirect_to @report, notice: 'Report was successfully updated.' }
+        format.html { redirect_to patient_report_url(@report.patient, @report), notice: 'Report was successfully updated.' }
         format.json { render :show, status: :ok, location: @report }
       else
         format.html { render :edit }
@@ -54,9 +60,10 @@ class ReportsController < ApplicationController
   # DELETE /reports/1
   # DELETE /reports/1.json
   def destroy
+    puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     @report.destroy
     respond_to do |format|
-      format.html { redirect_to reports_url, notice: 'Report was successfully destroyed.' }
+      format.html { redirect_to patient_reports_url(@patient), notice: 'Report was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -70,5 +77,9 @@ class ReportsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def report_params
       params.require(:report).permit(:patient_id, :community_health_worker_id, :date, :health_status)
+    end
+
+    def set_patient
+      @patient = Patient.find(params[:patient_id])
     end
 end

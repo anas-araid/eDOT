@@ -1,5 +1,5 @@
 <h1>New Report</h1>
 
-<%= render 'form', report: @report %>
+<%= render 'form', report: @report, redir_url:  patient_reports_path %>
 
-<%= link_to 'Back', reports_path %>
+<%= link_to 'Back', patient_reports_path %>

@@ -20,5 +20,6 @@
   <%= @report.health_status %>
 </p>
 
-<%= link_to 'Edit', edit_report_path(@report) %> |
-<%= link_to 'Back', reports_path %>
+<%= link_to 'Edit', edit_patient_report_url(@report.patient, @report) %> |
+
+<%= link_to 'Back', patient_reports_path(@report.patient) %>
