@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  patient_id: 1
+  community_health_worker_id: 1
+  date: 2016-08-01
+  health_status: MyText
+
+two:
+  patient_id: 1
+  community_health_worker_id: 1
+  date: 2016-08-01
+  health_status: MyText

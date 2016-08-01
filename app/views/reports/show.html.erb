@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Patient:</strong>
+  <%= @report.patient_id %>
+</p>
+
+<p>
+  <strong>Community health worker:</strong>
+  <%= @report.community_health_worker_id %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @report.date %>
+</p>
+
+<p>
+  <strong>Health status:</strong>
+  <%= @report.health_status %>
+</p>
+
+<%= link_to 'Edit', edit_report_path(@report) %> |
+<%= link_to 'Back', reports_path %>
