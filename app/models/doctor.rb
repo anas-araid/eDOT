@@ -1,3 +1,3 @@
 class Doctor < ApplicationRecord
-  belongs_to :health_center
+  has_one :health_center
 end
