@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :doctors
   resources :health_centers
   resources :community_health_workers
   resources :patients
