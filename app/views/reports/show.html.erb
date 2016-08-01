@@ -19,6 +19,7 @@
   <strong>Health status:</strong>
   <%= @report.health_status %>
 </p>
+<%= link_to 'Download CSV list', patient_report_path(format: :csv) %>
 
 <%= link_to 'Edit', edit_patient_report_url(@report.patient, @report) %> |
 

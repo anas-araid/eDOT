@@ -1,0 +1,4 @@
+<%- headers = ['Patient','Community health worker', 'Date', 'Health status'] -%>
+<%= CSV.generate_line headers %>
+
+<%= CSV.generate_line ([@report.patient_id, @report.community_health_worker_id, @report.date, @report.health_status]) -%>

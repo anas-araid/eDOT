@@ -10,7 +10,15 @@ class ReportsController < ApplicationController
 
   def index
     @reports = @patient.reports
+    respond_to do |format|
+      format.html
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"user-list\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
+    end
   end
+
 
   # GET /reports/1
   # GET /reports/1.json
