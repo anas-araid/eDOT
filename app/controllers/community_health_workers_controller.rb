@@ -69,6 +69,6 @@ class CommunityHealthWorkersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def community_health_worker_params
-      params.require(:community_health_worker).permit(:name, :surname, :birthdate, :gender, :phone)
+      params.require(:community_health_worker).permit(:name, :surname, :birthdate, :gender, :phone, :health_center_id)
     end
 end

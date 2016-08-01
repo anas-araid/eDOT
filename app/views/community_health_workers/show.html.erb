@@ -25,5 +25,10 @@
   <%= @community_health_worker.phone %>
 </p>
 
+<p>
+  <strong>Health Center:</strong>
+  <%= @community_health_worker.health_center_id %>
+</p>
+
 <%= link_to 'Edit', edit_community_health_worker_path(@community_health_worker) %> |
 <%= link_to 'Back', community_health_workers_path %>
