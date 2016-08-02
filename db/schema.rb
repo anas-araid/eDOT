@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20160802072939) do
     t.string   "gender"
     t.string   "phone"
     t.integer  "health_center_id"
+    t.string   "type"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
