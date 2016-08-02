@@ -12,11 +12,8 @@ class ReportsController < ApplicationController
     @reports = @patient.reports
     respond_to do |format|
       format.html
-      format.csv do
-        headers['Content-Disposition'] = "attachment; filename=\"user-list\""
-        headers['Content-Type'] ||= 'text/csv'
-      end
-    end
+      format.csv
+     end
   end
 
 
@@ -68,7 +65,6 @@ class ReportsController < ApplicationController
   # DELETE /reports/1
   # DELETE /reports/1.json
   def destroy
-    puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     @report.destroy
     respond_to do |format|
       format.html { redirect_to patient_reports_url(@patient), notice: 'Report was successfully destroyed.' }

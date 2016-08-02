@@ -1,0 +1,8 @@
+<% response.headers['Content-Disposition'] = "attachment; filename=  #{@patient.id}_#{@patient.name}_#{@patient.surname}_all_reports_#{Time.now.strftime("%d-%m-%Y-%H-%M")}.csv " %>
+<% response.headers['Content-Type'] = 'text/csv'%>
+<%- headers = ['Patient id', 'name', 'surname', 'address', 'gender', 'birthdate', 'phone','CHW', 'CHW id', 'Date', 'Health status'] -%>
+<%= CSV.generate_line headers %>
+<%- @reports = @patient.reports -%>
+<%- @reports.each do |doc| -%>
+  <%= CSV.generate_line ([doc.patient_id, doc.patient.name, doc.patient.surname, doc.patient.address, doc.patient.gender, doc.patient.birthdate, doc.patient.phone, doc.community_health_worker.name,  doc.patient.community_health_worker_id, doc.date, doc.health_status]) =%>
+<%- end -%>
