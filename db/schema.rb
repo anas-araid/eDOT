@@ -12,12 +12,34 @@
 
 ActiveRecord::Schema.define(version: 20160802074433) do
 
+  create_table "community_health_workers", force: :cascade do |t|
+    t.string   "name"
+    t.string   "surname"
+    t.date     "birthdate"
+    t.string   "gender"
+    t.string   "phone"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "health_center_id"
+  end
+
+  create_table "doctors", force: :cascade do |t|
+    t.string   "name"
+    t.date     "birthdate"
+    t.string   "phone"
+    t.string   "gender"
+    t.integer  "health_center_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
   create_table "health_centers", force: :cascade do |t|
     t.string   "name"
     t.string   "address"
     t.string   "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "doctor_id"
   end
 
   create_table "patients", force: :cascade do |t|
@@ -28,8 +50,9 @@ ActiveRecord::Schema.define(version: 20160802074433) do
     t.date     "birthdate"
     t.string   "phone"
     t.date     "starting_therapy_day"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.integer  "community_health_worker_id"
     t.integer  "health_center_id"
     t.integer  "user_id"
   end
