@@ -13,6 +13,16 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :user_type %><br />
+    <%= f.text_field :user_type, autocomplete: "on" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :health_center_id %><br />
+    <%= f.number_field :health_center_id, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
     <%= f.password_field :password, autocomplete: "off" %>
     <% if @minimum_password_length %>
@@ -31,10 +41,6 @@
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
-  <div class="field">
-    <%= f.label :health_center_id %><br />
-    <%= f.number_field :health_center_id, autocomplete: "off" %>
-  </div>
 
   <div class="actions">
     <%= f.submit "Update" %>

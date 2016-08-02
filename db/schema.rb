@@ -10,28 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160802074433) do
-
-  create_table "community_health_workers", force: :cascade do |t|
-    t.string   "name"
-    t.string   "surname"
-    t.date     "birthdate"
-    t.string   "gender"
-    t.string   "phone"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.integer  "health_center_id"
-  end
-
-  create_table "doctors", force: :cascade do |t|
-    t.string   "name"
-    t.date     "birthdate"
-    t.string   "phone"
-    t.string   "gender"
-    t.integer  "health_center_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-  end
+ActiveRecord::Schema.define(version: 20160802120515) do
 
   create_table "health_centers", force: :cascade do |t|
     t.string   "name"
@@ -39,7 +18,6 @@ ActiveRecord::Schema.define(version: 20160802074433) do
     t.string   "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "doctor_id"
   end
 
   create_table "patients", force: :cascade do |t|
@@ -50,9 +28,8 @@ ActiveRecord::Schema.define(version: 20160802074433) do
     t.date     "birthdate"
     t.string   "phone"
     t.date     "starting_therapy_day"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.integer  "community_health_worker_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.integer  "health_center_id"
     t.integer  "user_id"
   end
@@ -85,7 +62,7 @@ ActiveRecord::Schema.define(version: 20160802074433) do
     t.string   "gender"
     t.string   "phone"
     t.integer  "health_center_id"
-    t.string   "type"
+    t.string   "user_type"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
