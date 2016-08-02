@@ -1,1 +1,0 @@
-json.partial! "community_health_workers/community_health_worker", community_health_worker: @community_health_worker
