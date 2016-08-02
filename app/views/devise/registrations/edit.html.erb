@@ -4,6 +4,36 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :surname %><br />
+    <%= f.text_field :surname, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :birthdate %><br />
+    <%= f.date_select :birthdate, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone %><br />
+    <%= f.text_field :phone, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender %><br />
+    <%= f.text_field :gender, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :health_center_id %><br />
+    <%= f.number_field :health_center_id, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
@@ -15,11 +45,6 @@
   <div class="field">
     <%= f.label :user_type %><br />
     <%= f.text_field :user_type, autocomplete: "on" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :health_center_id %><br />
-    <%= f.number_field :health_center_id, autocomplete: "off" %>
   </div>
 
   <div class="field">

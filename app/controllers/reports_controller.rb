@@ -81,7 +81,9 @@ class ReportsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def report_params
-      params.require(:report).permit(:patient_id, :user_id, :date, :health_status)
+      pp = params.require(:report).permit(:patient_id, :user_id, :date, :health_status)
+      pp[:patient_id] = @patient.id
+      return pp
     end
 
     def set_patient

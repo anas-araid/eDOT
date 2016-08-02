@@ -10,7 +10,7 @@
       <th>Birthdate</th>
       <th>Phone</th>
       <th>Starting therapy day</th>
-      <th>Cared by</th>
+      <th>Cared by (id)</th>
       <th>Health Center</th>
       <th colspan="3"></th>
     </tr>
@@ -26,7 +26,7 @@
         <td><%= patient.birthdate %></td>
         <td><%= patient.phone %></td>
         <td><%= patient.starting_therapy_day %></td>
-        <td><%= patient.user_id %></td>
+        <td><%= "#{patient.user.name} #{patient.user.surname} (#{patient.user_id})" %></td>
         <td><%= patient.health_center_id %></td>
         <td><%= link_to 'Show', patient %></td>
         <td><%= link_to 'Edit', edit_patient_path(patient) %></td>

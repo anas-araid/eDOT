@@ -1,11 +1,46 @@
 <p>
-  <strong>Patient:</strong>
+  <strong>Patient ID:</strong>
   <%= @report.patient_id %>
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @report.user_id %>
+  <strong>Name:</strong>
+  <%= @report.patient.name %>
+</p>
+
+<p>
+  <strong>Surname:</strong>
+  <%= @report.patient.surname %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @report.patient.address %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @report.patient.gender %>
+</p>
+
+<p>
+  <strong>Birthdate:</strong>
+  <%= @report.patient.birthdate %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @report.patient.phone %>
+</p>
+
+<p>
+  <strong>Compiled by:</strong>
+  <%= "#{@report.user.name} #{@report.user.surname}" %>
+</p>
+
+<p>
+  <strong>Compiler ID:</strong>
+  <%= @report.user.id %>
 </p>
 
 <p>

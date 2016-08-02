@@ -34,8 +34,8 @@
 </p>
 
 <p>
-  <strong>Cared by:</strong>
-  <%= @patient.user_id %>
+  <strong>Cared by(id):</strong>
+  <%= "#{@patient.user.name} #{@patient.user.surname} (#{@patient.user.id})  "%>
 </p>
 
 <p>
