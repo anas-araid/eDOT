@@ -4,7 +4,7 @@
   <thead>
     <tr>
       <th>Patient</th>
-      <th>Community health worker</th>
+      <th>User</th>
       <th>Date</th>
       <th>Health status</th>
       <th colspan="3"></th>
@@ -15,7 +15,7 @@
     <% @patient.reports.each do |report| %>
       <tr>
         <td><%= report.patient_id %></td>
-        <td><%= report.community_health_worker_id %></td>
+        <td><%= report.user_id %></td>
         <td><%= report.date %></td>
         <td><%= report.health_status %></td>
         <td><%= link_to 'Show', patient_report_url(report.patient, report) %></td>

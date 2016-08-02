@@ -4,8 +4,8 @@
 </p>
 
 <p>
-  <strong>Community health worker:</strong>
-  <%= @report.community_health_worker_id %>
+  <strong>User:</strong>
+  <%= @report.user_id %>
 </p>
 
 <p>
@@ -19,6 +19,6 @@
 </p>
 <%= link_to 'Download CSV', patient_report_path(format: :csv) %>
 
-<%= link_to 'Edit', edit_patient_report_url(@report.patient, @report) %> |
+<%= link_to 'Edit', edit_patient_report_path(@report.patient, @report) %> |
 
 <%= link_to 'Back', patient_reports_path(@report.patient) %>

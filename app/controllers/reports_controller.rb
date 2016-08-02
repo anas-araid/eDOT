@@ -68,7 +68,6 @@ class ReportsController < ApplicationController
   # DELETE /reports/1
   # DELETE /reports/1.json
   def destroy
-    puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
     @report.destroy
     respond_to do |format|
       format.html { redirect_to patient_reports_url(@patient), notice: 'Report was successfully destroyed.' }
@@ -84,7 +83,7 @@ class ReportsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def report_params
-      params.require(:report).permit(:patient_id, :community_health_worker_id, :date, :health_status)
+      params.require(:report).permit(:patient_id, :user_id, :date, :health_status)
     end
 
     def set_patient

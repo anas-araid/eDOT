@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Health Centers</h1>
 
 <table>
@@ -8,7 +6,6 @@
       <th>Name</th>
       <th>Address</th>
       <th>Phone</th>
-      <th>Doctor</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,7 +16,6 @@
         <td><%= health_center.name %></td>
         <td><%= health_center.address %></td>
         <td><%= health_center.phone %></td>
-        <td><%= health_center.doctor_id %></td>
         <td><%= link_to 'Show', health_center %></td>
         <td><%= link_to 'Edit', edit_health_center_path(health_center) %></td>
         <td><%= link_to 'Destroy', health_center, method: :delete, data: { confirm: 'Are you sure?' } %></td>
