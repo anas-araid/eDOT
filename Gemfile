@@ -8,6 +8,8 @@ gem 'sqlite3'
 
 gem 'geocoder'
 
+gem 'devise'
+
 gem 'validates_phone_number'
 
 # Use Puma as the app server
