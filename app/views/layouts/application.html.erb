@@ -6,6 +6,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
 
   <body>
@@ -16,15 +17,46 @@
       <p class="alert alert-danger" id="notice"><%= alert %></p>
     <% end %>
 
+    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+      <header class="mdl-layout__header mdl-layout__header--transparent">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">Title</span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+          <% if user_signed_in? %>
+            Logged in as &nbsp; <strong> <%= current_user.email %> </strong>
+          <!-- Navigation -->
+          <nav class="mdl-navigation">
+            <%= link_to 'Edit profile', edit_user_registration_path, :class => 'mdl-navigation__link' %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'mdl-navigation__link'   %>
+          <% else %>
+            <%= link_to "Sign up", new_user_registration_path, :class =>'mdl-navigation__link'  %> |
+            <%= link_to "Login", new_user_session_path, :class =>'mdl-navigation__link'  %>
+          <% end %>
+          </nav>
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Title</span>
+        <nav class="mdl-navigation">
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+          <a class="mdl-navigation__link" href="">Link</a>
+        </nav>
+      </div>
+      <main class="mdl-layout__content">
+
+
+      </main>
+    </div>
+
     <p>
-    <% if user_signed_in? %>
-      Logged in as <strong><%= current_user.email %></strong>.
-      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-    <% else %>
-      <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-      <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-    <% end %>
+
+
+
+
   </p>
 
     <%= yield %>
