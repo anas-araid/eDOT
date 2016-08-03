@@ -1,15 +1,18 @@
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <%= f.email_field :email, :class => "mdl-textfield__input", :id => "email"%>
+    <%= f.label :email, :class => "mdl-textfield__label", :for => "email"%>
   </div>
+<br/>
+
+<div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+  <%= f.password_field :password,  :class => "mdl-textfield__input", :id => "password"%>
+  <%= f.label :password, :class => "mdl-textfield__label", :for => "password", autocomplete: "off"%>
+</div>
+<br/>
 
   <% if devise_mapping.rememberable? -%>
     <div class="field">

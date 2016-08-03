@@ -30,4 +30,7 @@ class ApplicationController < ActionController::Base
       :health_center_id,
       :user_type) }
   end
+  def after_sign_in_path_for(user)
+    patients_path() #your path
+  end
 end
