@@ -10,8 +10,6 @@ gem 'geocoder'
 
 gem 'devise'
 
-gem 'toastr-rails'
-
 gem 'validates_phone_number'
 
 # Use Puma as the app server
