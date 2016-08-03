@@ -11,46 +11,7 @@
   </head>
 
   <body class="mdl-color--grey-300">
-    <!--  <% if notice %>
-          <p class="alert alert-success" id="notice"><%= notice %></p>
-        <% end %>
-        <% if alert %>
-          <p class="alert alert-danger" id="notice"><%= alert %></p>
-        <% end %>
--->
-
-
-
-    <% if notice %>
-      <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
-        <div class="mdl-snackbar__text"></div>
-      </div>
-      <script>
-      (function() {
-        var notification = document.querySelector('.mdl-js-snackbar');
-        notification.MaterialSnackbar.showSnackbar(
-          {
-            message: 'Image Uploaded'
-          }
-        );
-      }());
-      </script>
-    <% end %>
-    <% if alert %>
-    <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
-      <div class="mdl-snackbar__text"></div>
-    </div>
-    <script>
-    (function() {var notification = document.querySelector('.mdl-js-snackbar');
-        notification.MaterialSnackbar.showSnackbar(
-          {
-            message: 'Image Uploaded'
-          }
-        );
-    }());
-    </script>
-    <% end %>
-
+    
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
@@ -90,6 +51,12 @@
       </div>
       <main class="mdl-layout__content">
         <div class="page-content"><!-- Your content goes here -->
+          <% if notice %>
+              <p class="alert alert-success" id="notice"><%= notice %></p>
+            <% end %>
+            <% if alert %>
+              <p class="alert alert-danger" id="notice"><%= alert %></p>
+            <% end %>
             <%= yield %>
         </div>
 
