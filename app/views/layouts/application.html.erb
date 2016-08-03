@@ -7,27 +7,63 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   </head>
 
-  <body>
+  <body class="mdl-color--grey-300">
+    <!--  <% if notice %>
+          <p class="alert alert-success" id="notice"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger" id="notice"><%= alert %></p>
+        <% end %>
+-->
+
+
+
     <% if notice %>
-      <p class="alert alert-success" id="notice"><%= notice %></p>
+      <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
+        <div class="mdl-snackbar__text"></div>
+      </div>
+      <script>
+      (function() {
+        var notification = document.querySelector('.mdl-js-snackbar');
+        notification.MaterialSnackbar.showSnackbar(
+          {
+            message: 'Image Uploaded'
+          }
+        );
+      }());
+      </script>
     <% end %>
     <% if alert %>
-      <p class="alert alert-danger" id="notice"><%= alert %></p>
+    <div id="demo-toast-example" class="mdl-js-snackbar mdl-snackbar">
+      <div class="mdl-snackbar__text"></div>
+    </div>
+    <script>
+    (function() {var notification = document.querySelector('.mdl-js-snackbar');
+        notification.MaterialSnackbar.showSnackbar(
+          {
+            message: 'Image Uploaded'
+          }
+        );
+    }());
+    </script>
     <% end %>
 
-    <div class="demo-layout-transparent mdl-layout mdl-js-layout">
-      <header class="mdl-layout__header mdl-layout__header--transparent">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
           <!-- Title -->
-          <span class="mdl-layout-title">Title</span>
+          <span class="mdl-layout-title">eDOT</span>
           <!-- Add spacer, to align navigation to the right -->
           <div class="mdl-layout-spacer"></div>
           <% if user_signed_in? %>
+          <p class="mdl-layout--large-screen-only">
             Logged in as &nbsp; <strong> <%= current_user.email %> </strong>
+          </p>
           <!-- Navigation -->
-          <nav class="mdl-navigation">
+          <nav class="mdl-navigation mdl-layout--large-screen-only">
             <%= link_to 'Edit profile', edit_user_registration_path, :class => 'mdl-navigation__link' %>
             <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'mdl-navigation__link'   %>
           <% else %>
@@ -38,27 +74,26 @@
         </div>
       </header>
       <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Title</span>
+        <span class="mdl-layout-title">eDOT</span>
         <nav class="mdl-navigation">
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
-          <a class="mdl-navigation__link" href="">Link</a>
+          <% if user_signed_in? %>
+            <%= link_to 'Edit profile', edit_user_registration_path, :class => 'mdl-navigation__link' %>
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'mdl-navigation__link'   %>
+                <p class="mdl-navigation__link"> Logged in as &nbsp;
+                <strong> <%= current_user.email %> </strong>
+              </p>
+          <% else %>
+            <%= link_to "Login", new_user_session_path, :class =>'mdl-navigation__link'  %>
+            <%= link_to "Sign up", new_user_registration_path, :class =>'mdl-navigation__link'  %> |
+          <% end %>
         </nav>
       </div>
       <main class="mdl-layout__content">
-
+        <div class="page-content"><!-- Your content goes here -->
+            <%= yield %>
+        </div>
 
       </main>
-    </div>
 
-    <p>
-
-
-
-
-  </p>
-
-    <%= yield %>
   </body>
 </html>
