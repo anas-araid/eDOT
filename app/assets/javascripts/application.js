@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require material.min
+//= require getmdl-select.min
 //= require_tree .

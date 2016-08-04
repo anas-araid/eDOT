@@ -35,21 +35,17 @@
      <%= f.radio_button :gender, 'female', :class => "mdl-radio__button" %>
      <%= label :female, 'Female' %>
    </label>
-
-    <%#= f.label :male, :class => "mdl-radio mdl-js-radio mdl-js-ripple-effect" do%>
-      <%#= f.radio_button :gender, :id => "male", :class => "mdl-radio__button", :name => "options",  :value => "male", :checked => true%>
       <br />
-    <%# end %>
 
-    <%#= f.label :female, :class => "mdl-radio mdl-js-radio mdl-js-ripple-effect" do%>
-      <%#= f.radio_button :gender, :id => "female", :class => "mdl-radio__button", :name => "options",  :value => "female"%><br />
-      <%#= f.label :gender, "Female", class: "mdl-radio__label" %>
-    <%# end %>
-
-    <div class="field">
-      <%= f.label :health_center_id %><br />
-      <%= f.number_field :health_center_id, autocomplete: "off" %>
-    </div>
+<br>
+     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
+       <input class="mdl-textfield__input" value="" type="text" id="<%= :health_center_id %>" readonly tabIndex="-1" />
+         <label class="mdl-textfield__label" for="country">Health Center</label>
+         <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="<%= :health_center_id %>">
+           <li class="mdl-menu__item">Belarus</li>
+           <li class="mdl-menu__item">Russia</li>
+         </ul>
+     </div>
 
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
       <%= f.email_field :email, :class => "mdl-textfield__input", :id => "email"%>
