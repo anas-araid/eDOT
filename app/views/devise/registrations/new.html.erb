@@ -39,13 +39,29 @@
 
 <br>
      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
-       <input class="mdl-textfield__input" value="" type="text" id="<%= :health_center_id %>" readonly tabIndex="-1" />
+       <%= f.text_field :health_center_id, :class => "mdl-textfield__input", :value => "", :type => "text", :id => "health_center_id", :readonly => "", :tabIndex => "-1"%>
+       <!--input class="mdl-textfield__input" value="" type="text" id="<%= :health_center_id %>" readonly tabIndex="-1" /-->
          <label class="mdl-textfield__label" for="country">Health Center</label>
-         <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="<%= :health_center_id %>">
-           <li class="mdl-menu__item">Belarus</li>
-           <li class="mdl-menu__item">Russia</li>
+         <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="health_center_id">
+           <% @health_centers.each do |health_center| %>
+             <li class="mdl-menu__item">
+               <%=health_center.name%>
+             </li>
+           <% end %>
          </ul>
      </div>
+
+     <br>
+
+     <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+       <%= f.radio_button :user_type, 'doctor', :class => "mdl-radio__button" , :checked => true %>
+       <%= label :doctor, 'Doctor' %>
+     </label>
+     <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+      <%= f.radio_button :user_type, 'chw', :class => "mdl-radio__button" %>
+      <%= label :chw, 'Community health worker' %>
+    </label>
+       <br />
 
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
       <%= f.email_field :email, :class => "mdl-textfield__input", :id => "email"%>
