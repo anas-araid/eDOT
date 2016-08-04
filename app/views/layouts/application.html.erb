@@ -13,6 +13,8 @@
     <link rel="icon" sizes="192x192" href="../images/icon.png">
     <script src="getmdl-select.min.js"></script>
     <link rel="stylesheet" href="getmdl-select.min.css">
+    <script src="alertify.min.js"></script>
+    <link rel="stylesheet" href="alertify.default.css" />
   </head>
 
   <body class="mdl-color--cyan-50">
@@ -66,10 +68,20 @@
       <main class="mdl-layout__content">
         <div class="page-content">
           <% if notice %>
-              <p class="alert alert-success" id="notice"><%= notice %></p>
+              <p class="alert alert-success" id="notice">
+                <script>
+                    var a = "<%= notice %>"
+                    alertify.success(a)
+                </script>
+              </p>
             <% end %>
             <% if alert %>
-              <p class="alert alert-danger" id="notice"><%= alert %></p>
+              <p class="alert alert-danger" id="notice">
+                <script>
+                    var a = "<%= alert %>"
+                    alertify.error(a)
+                </script>
+              </p>
             <% end %>
             <%= yield %>
         </div>
@@ -77,4 +89,5 @@
       </main>
 
   </body>
+
 </html>

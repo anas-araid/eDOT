@@ -13,6 +13,8 @@
  *= require_tree .
  *= require_self
  *= require material.min
+ *= require alertify.core
+ *= require alertify.default
  *= require getmdl-select.min
 
 
