@@ -39,13 +39,12 @@
 
 <br>
      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select">
-       <%= f.text_field :health_center_id, :class => "mdl-textfield__input", :value => "", :type => "text", :id => "health_center_id", :readonly => "", :tabIndex => "-1"%>
-       <!--input class="mdl-textfield__input" value="" type="text" id="<%= :health_center_id %>" readonly tabIndex="-1" /-->
+       <%= f.text_field :health_center_id, :class => "mdl-textfield__input", :value => "", :type => "text", :id => "health_center", :readonly => "", :tabIndex => "-1"%>
          <label class="mdl-textfield__label" for="country">Health Center</label>
-         <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="health_center_id">
+         <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="health_center">
            <% @health_centers.each do |health_center| %>
              <li class="mdl-menu__item">
-               <%=health_center.name%>
+               <%= health_center.id %>
              </li>
            <% end %>
          </ul>

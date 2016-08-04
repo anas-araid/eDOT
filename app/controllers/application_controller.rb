@@ -38,4 +38,5 @@ class ApplicationController < ActionController::Base
   def set_health_centers
     @health_centers = HealthCenter.all
   end
+
 end
