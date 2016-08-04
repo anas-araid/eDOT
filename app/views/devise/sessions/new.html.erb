@@ -1,31 +1,74 @@
 <div align="center">
-<div><h2 style= "color:teal; text-align:center; font-size:90px">Login</h2></div>
+</br>
+<div>
+  <h2 style= "color:teal; text-align:center; font-size:90px">Login</h2>
+</div>
+</br>
+</br>
+</br>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <i class="material-icons" style="color:teal;">email</i>
       <%= f.email_field :email, :class => "mdl-textfield__input", :id => "email"%>
       <%= f.label :email, :class => "mdl-textfield__label", :for => "email"%>
     </div>
   <br/>
 
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <i class="material-icons" style="color:teal;">lock</i>
     <%= f.password_field :password,  :class => "mdl-textfield__input", :id => "password"%>
     <%= f.label :password, :class => "mdl-textfield__label", :for => "password", autocomplete: "off"%>
   </div>
-  <br/>
+</br>
+  </br>
+  </br>
 
-    <% if devise_mapping.rememberable? -%>
-      <div class="field">
-        <%= f.check_box :remember_me %>
-        <%= f.label :remember_me %>
-      </div>
-    <% end -%>
+<style>
+#remember_me{
+  text-align: center;
+  margin-right: 0.5em;
+  width: 11em;
+}
+</style>
 
-    <div class="actions">
-      <%= f.submit "Log in" %>
+  <% if devise_mapping.rememberable? -%>
+    <div class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" id = "remember">
+        <%= f.check_box :remember_me, :class => "mdl-checkbox__input" %>
+        <%= f.label :remember_me, :class => "mdl-checkbox__label"%>
     </div>
-  <% end %>
+  <% end -%>
 
-  <%= render "devise/shared/links" %>
+
+  <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" id="remember_me">
+    <input name="user[remember_me]" type="hidden" value="0">
+    <input id="user_remember_me" name="user[remember_me]"  type="checkbox" value = "1" class="mdl-checkbox__input">
+    <span class="mdl-checkbox__label">Remember me</span>
+  </label>
+
+  <!--div class="checkbox">
+    <label for="user_remember_me">
+      <input name="user[remember_me]" type="hidden" value="0">
+      <input id="user_remember_me" name="user[remember_me]" type="checkbox" value="1"> Remember me
+    </label>
+  </div-->
+
+  </br>
+  </br>
+
+
+
+    <!--label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
+      <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
+      <span class="mdl-checkbox__label">Checkbox</span>
+    </label-->
+
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-100" type = "submit">
+      <i class="material-icons">exit_to_app</i>
+    </button>
+  <% end %>
+</br>
+</br>
+
 </div>

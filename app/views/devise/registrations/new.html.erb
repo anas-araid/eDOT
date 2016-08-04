@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div align="center">
   <h2>Sign up</h2>
 
@@ -17,7 +18,7 @@
 
     <div class="field">
       <%= f.label :birthdate %><br />
-      <%= f.date_select :birthdate, autofocus: true %>
+      <%= f.date_select :birthdate, autofocus: true, start_year: 1900, order: [:day, :month, :year] %>
     </div>
 
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
