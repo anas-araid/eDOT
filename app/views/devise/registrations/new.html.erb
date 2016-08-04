@@ -44,7 +44,7 @@
          <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="health_center">
            <% @health_centers.each do |health_center| %>
              <li class="mdl-menu__item">
-               <%= health_center.id %>
+               <%= "#{health_center.id} #{health_center.name}" %>
              </li>
            <% end %>
          </ul>
