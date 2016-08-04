@@ -4,8 +4,8 @@
     <title>EDOT</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => false%>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
   </head>
@@ -25,11 +25,14 @@
           </p>
           <!-- Navigation -->
           <nav class="mdl-navigation mdl-layout--large-screen-only">
+            <%= link_to "Home", root_path, :class => 'mdl-navigation__link'   %>
+            <a class="mdl-navigation__link" href="">GitHub</a>
             <%= link_to 'Edit profile', edit_user_registration_path, :class => 'mdl-navigation__link' %>
             <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'mdl-navigation__link'   %>
           <% else %>
-            <%= link_to "Sign up", new_user_registration_path, :class =>'mdl-navigation__link'  %> |
-            <%= link_to "Login", new_user_session_path, :class =>'mdl-navigation__link'  %>
+            <%= link_to "Home", root_path, :class => 'mdl-navigation__link'   %> |
+            <%= link_to "", new_user_registration_path, :class =>'mdl-navigation__link'  %> |
+            <a class="mdl-navigation__link" href="http://git.ict4g.org/masinag/eDOT.git">GitHub</a>
           <% end %>
           </nav>
         </div>

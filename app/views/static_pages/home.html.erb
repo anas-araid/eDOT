@@ -7,11 +7,6 @@
 <br/>
 <!-- Accent-colored raised button with ripple -->
 <p class="mdl-typography--text-center">
-<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--teal-400 mdl-color-text--cyan-50">
-    &nbsp; &nbsp; &nbsp;   Sign up &nbsp; &nbsp; &nbsp;
-</button>
 
-<!-- Accent-colored flat button -->
-<button class="mdl-button mdl-js-button mdl-button--accent mdl-color-text--teal-900">
-      &nbsp; &nbsp; &nbsp;  login &nbsp; &nbsp; &nbsp;
-</button>
+<%= link_to "Sign up", new_user_registration_path, :class =>'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--teal-400 mdl-color-text--cyan-50'  %>
+<%= link_to "Login", new_user_session_path, :class =>'mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--teal-900'  %>
