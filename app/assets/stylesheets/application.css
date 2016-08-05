@@ -28,3 +28,12 @@
 #add_button{
   margin: 0px 0px 0px 100px;
 }
+
+
+/* visited link */
+a:link, a:visited, a:hover, a:active{
+    color: teal;
+    text-decoration: none;
+    display: inline-block;
+    background-color: transparent;
+}

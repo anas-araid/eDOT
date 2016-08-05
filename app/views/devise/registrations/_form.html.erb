@@ -79,15 +79,29 @@
 
     <br>
 
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <%= f.password_field :password, :class => "mdl-textfield__input", :id => "password", :pattern => ".{"+ @minimum_password_length.to_s + ",}"%>
-      <%= f.label :password, :class => "mdl-textfield__label", :for => "password" %>
-    </div>
-    <br>
+    <% if user_signed_in? %>
+      <a href = "" onclick="toggle_visibility('password_change');return false;">
+          Click here to change your password
+      </a>
 
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-      <%= f.password_field :password_confirmation, :class => "mdl-textfield__input", :id => "password_confirmation", :pattern => ".{"+ @minimum_password_length.to_s + ",}"%>
-      <%= f.label :password_confirmation, :class => "mdl-textfield__label", :for => "password_confirmation"%>
+      <div id="password_change" style="display:none">
+
+    <% else %>
+
+    <div id="password_change" style="display:block">
+
+    <% end %>
+
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <%= f.password_field :password, :class => "mdl-textfield__input", :id => "password", :pattern => ".{"+ @minimum_password_length.to_s + ",}"%>
+        <%= f.label :password, :class => "mdl-textfield__label", :for => "password" %>
+      </div>
+      <br>
+
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <%= f.password_field :password_confirmation, :class => "mdl-textfield__input", :id => "password_confirmation", :pattern => ".{"+ @minimum_password_length.to_s + ",}"%>
+        <%= f.label :password_confirmation, :class => "mdl-textfield__label", :for => "password_confirmation"%>
+      </div>
     </div>
     <br>
 
@@ -101,11 +115,12 @@
     </br>
     </br>
 
-    <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-100" type = "submit">
+    <%= button_to registration_path(resource_name), :class => "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-100", method: :update do %>
       <i class="material-icons">exit_to_app</i>
-    </button>
+    <% end %>
 
     <% if user_signed_in? %>
+      &emsp; &emsp;
       <%= button_to registration_path(resource_name), :class => "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--red", data: { confirm: "Are you sure?" }, method: :delete do %>
         <i class="material-icons">delete</i>
       <% end %>

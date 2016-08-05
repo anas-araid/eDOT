@@ -7,6 +7,7 @@
 <br/>
 <!-- Accent-colored raised button with ripple -->
 <p class="mdl-typography--text-center">
-
-<%= link_to "Sign up", new_user_registration_path, :class =>'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--teal-400 mdl-color-text--cyan-50'  %>
-<%= link_to "Login", new_user_session_path, :class =>'mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--teal-900'  %>
+<% if not user_signed_in? %>
+  <%= link_to "Sign up", new_user_registration_path, :class =>'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--teal-400 mdl-color-text--cyan-50'  %>
+  <%= link_to "Login", new_user_session_path, :class =>'mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--teal-900'  %>
+<% end %>
