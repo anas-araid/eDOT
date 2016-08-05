@@ -25,22 +25,6 @@
   </br>
   </br>
 
-<style>
-#remember_me{
-  text-align: center;
-  margin-right: 0.5em;
-  width: 11em;
-}
-</style>
-<!--
-  <% if devise_mapping.rememberable? -%>
-    <div class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" id = "remember">
-        <%= f.check_box :remember_me, :class => "mdl-checkbox__input" %>
-        <%= f.label :remember_me, :class => "mdl-checkbox__label"%>
-    </div>
-  <% end -%>
--->
-
   <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" id="remember_me">
     <input name="user[remember_me]" type="hidden" value="0">
     <input id="user_remember_me" name="user[remember_me]"  type="checkbox" value = "1" class="mdl-checkbox__input">
@@ -49,13 +33,6 @@
 
   </br>
   </br>
-
-
-
-    <!--label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
-      <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
-      <span class="mdl-checkbox__label">Checkbox</span>
-    </label-->
 
     <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-100" type = "submit">
       <i class="material-icons">exit_to_app</i>

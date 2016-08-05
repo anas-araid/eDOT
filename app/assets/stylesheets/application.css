@@ -48,3 +48,16 @@ a:link, a:visited, a:hover, a:active{
 #buttons_div {
   text-align: center;
 }
+
+.bottom-right-fixed {
+  position:fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9;
+}
+
+#remember_me{
+  text-align: center;
+  margin-right: 0.5em;
+  width: 11em;
+}

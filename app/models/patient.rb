@@ -5,7 +5,7 @@ class Patient < ApplicationRecord
   validates :name, :surname, :gender, :birthdate, presence:true
   validates :phone, :phone_number => {:format => /^[\d-]*$/}
 
-  validate :valid_address
+  #validate :valid_address
 
   def valid_address
     if Geocoder.search(address).empty?

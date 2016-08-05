@@ -35,5 +35,8 @@ table, td, th {
 </table>
 </div>
 <br>
-
-<%= link_to 'New Patient', new_patient_path %>
+<div>
+  <%= link_to new_patient_path, :class => "mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50 bottom-right-fixed" do %>
+    <i class="material-icons">add</i>
+  <% end %>
+</div>
