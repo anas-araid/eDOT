@@ -32,27 +32,20 @@
   width: 11em;
 }
 </style>
-
+<!--
   <% if devise_mapping.rememberable? -%>
     <div class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" id = "remember">
         <%= f.check_box :remember_me, :class => "mdl-checkbox__input" %>
         <%= f.label :remember_me, :class => "mdl-checkbox__label"%>
     </div>
   <% end -%>
-
+-->
 
   <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" id="remember_me">
     <input name="user[remember_me]" type="hidden" value="0">
     <input id="user_remember_me" name="user[remember_me]"  type="checkbox" value = "1" class="mdl-checkbox__input">
     <span class="mdl-checkbox__label">Remember me</span>
   </label>
-
-  <!--div class="checkbox">
-    <label for="user_remember_me">
-      <input name="user[remember_me]" type="hidden" value="0">
-      <input id="user_remember_me" name="user[remember_me]" type="checkbox" value="1"> Remember me
-    </label>
-  </div-->
 
   </br>
   </br>

@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require material.min
 //= require alertify.min
+//= require sorttable
 //= require getmdl-select.min
 //= require_tree .

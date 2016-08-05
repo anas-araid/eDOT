@@ -1,33 +1,34 @@
-<h1>Reports</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Patient ID</th>
-      <th>Name</th>
-      <th>Surname</th>
-      <th>Date</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @patient.reports.each do |report| %>
+<h1 style= "color:teal; text-align:center;font-family:Roboto; font-size:60px">Reports</h1>
+<div style = "overflow-x:auto;">
+  <table>
+    <thead>
       <tr>
-        <td><%= report.patient_id %></td>
-        <td><%= report.patient.name %></td>
-        <td><%= report.patient.surname %></td>
-        <td><%= report.date %></td>
-        <td><%= link_to 'Show', patient_report_url(report.patient, report) %></td>
-        <td><%= link_to 'Edit', edit_patient_report_url(report.patient, report) %></td>
-        <td><%= link_to 'Destroy', patient_report_url(report.patient, report), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Patient ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Date</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
+    <tbody>
+      <% @patient.reports.each do |report| %>
+        <tr>
+          <td><%= report.patient_id %></td>
+          <td><%= report.patient.name %></td>
+          <td><%= report.patient.surname %></td>
+          <td><%= report.date %></td>
+          <td><%= link_to 'Show', patient_report_url(report.patient, report) %></td>
+          <td><%= link_to 'Edit', edit_patient_report_url(report.patient, report) %></td>
+          <td><%= link_to 'Destroy', patient_report_url(report.patient, report), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <br>
 
 <%= link_to 'Download All reports (CSV)', patient_reports_path(format: :csv) %> |
 <%= link_to 'New Report', new_patient_report_path %> |
-<%= link_to 'Show Patient', patient_path(@patient) %>
+<%= link_to 'Show Patient', patient_path(@patient) %> |
+<%= link_to 'Show all patients', patients_path%>
