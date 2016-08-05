@@ -1,6 +1,7 @@
 class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :set_health_centers, :set_users, only: [:new, :edit]
 
   # GET /patients
   # GET /patients.json
@@ -76,4 +77,14 @@ class PatientsController < ApplicationController
     def patient_params
       params.require(:patient).permit(:name, :surname, :address, :gender, :birthdate, :phone, :starting_therapy_day, :user_id, :health_center_id)
     end
+
+    def set_health_centers
+      @health_centers = HealthCenter.all
+    end
+
+    # for the selection of which chw cares the patient
+    def set_users
+      @users = User.all.where(user_type: "chw")
+    end
+
 end
