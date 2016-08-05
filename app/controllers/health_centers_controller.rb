@@ -1,6 +1,6 @@
 class HealthCentersController < ApplicationController
   before_action :set_health_center, only: [:show, :edit, :update, :destroy]
-    before_action :authenticate_user!
+    before_action :authenticate_user!, except: [:new, :create]
 
   # GET /health_centers
   # GET /health_centers.json
@@ -29,7 +29,12 @@ class HealthCentersController < ApplicationController
 
     respond_to do |format|
       if @health_center.save
-        format.html { redirect_to @health_center, notice: 'Health center was successfully created.' }
+        if user_signed_in?
+          format.html { redirect_to @health_center, notice: 'Health center was successfully created.' }
+        else
+          format.html { redirect_to new_user_registration_path, notice: 'Health center was successfully created.' }
+        end
+
         format.json { render :show, status: :created, location: @health_center }
       else
         format.html { render :new }
