@@ -33,6 +33,7 @@
           <!-- Navigation -->
           <nav class="mdl-navigation mdl-layout--large-screen-only">
             <%= link_to "Home", root_path, :class => 'mdl-navigation__link'   %>
+            <%= link_to "Health centers", health_centers_path, :class =>'mdl-navigation__link'  %>
             <a class="mdl-navigation__link" href="">GitHub</a>
             <%= link_to 'Edit profile', edit_user_registration_path, :class => 'mdl-navigation__link' %>
             <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'mdl-navigation__link'   %>
@@ -40,7 +41,7 @@
           <nav class="mdl-navigation mdl-layout--large-screen-only">
             <%= link_to "Home", root_path, :class => 'mdl-navigation__link'   %>|
             <%= link_to "About", new_user_registration_path, :class =>'mdl-navigation__link'  %>|
-            <a class="mdl-navigation__link" href="http://git.ict4g.org/masinag/eDOT.git">GitHub</a>
+            <a class="mdl-navigation__link" href="http://git.ict4g.org/masinag/eDOT.git">GitHub</a>|
           <% end %>
           </nav>
         </div>
@@ -50,6 +51,7 @@
         <nav class="mdl-navigation">
           <% if user_signed_in? %>
             <%= link_to "Home", root_path, :class => 'mdl-navigation__link'   %>
+            <%= link_to "Health centers", health_centers_path, :class =>'mdl-navigation__link'  %>
             <%= link_to "About", new_user_registration_path, :class =>'mdl-navigation__link'  %>
             <a class="mdl-navigation__link" href="http://git.ict4g.org/masinag/eDOT.git">GitHub</a>
             <hr>
