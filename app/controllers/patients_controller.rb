@@ -5,7 +5,11 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.json
   def index
-    @patients = Patient.all
+    if current_user.user_type=="doctor"
+      @patients = Patient.all.where(health_center_id: current_user.health_center_id)
+    else
+      @patients = Patient.all.where(user_id: current_user.id)
+    end
   end
 
   # GET /patients/1
