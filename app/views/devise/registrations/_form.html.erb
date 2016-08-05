@@ -1,0 +1,116 @@
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+    <h2> <%= title %> </h2>
+
+    <%= devise_error_messages! %>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <%= f.text_field :name, :class => "mdl-textfield__input", :id => "name"%>
+      <%= f.label :name, :class => "mdl-textfield__label", :for => "name"%>
+    </div>
+    <br>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <%= f.text_field :surname, :class => "mdl-textfield__input", :id => "surname"%>
+      <%= f.label :surname, :class => "mdl-textfield__label", :for => "surname"%>
+    </div>
+
+    <div class="field">
+      <%= f.label :birthdate %><br />
+      <%= f.date_select :birthdate, autofocus: true, start_year: 1900, order: [:day, :month, :year] %>
+    </div>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <%= f.number_field :phone, :class => "mdl-textfield__input", :id => "phone"%>
+      <%= f.label :phone, :class => "mdl-textfield__label", :for => "phone"%>
+    </div>
+
+    <br>
+
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+      <%= f.radio_button :gender, 'male', :class => "mdl-radio__button" , :checked => true %>
+      <%= label :male, 'Male' %>
+    </label>
+    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+     <%= f.radio_button :gender, 'female', :class => "mdl-radio__button" %>
+     <%= label :female, 'Female' %>
+   </label>
+
+    <br />
+
+    <br>
+
+
+      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+       <%= f.radio_button :user_type, 'doctor', :class => "mdl-radio__button" , :checked => true %>
+       <%= label :doctor, 'Doctor' %>
+      </label>
+      <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect">
+      <%= f.radio_button :user_type, 'chw', :class => "mdl-radio__button" %>
+      <%= label :chw, 'Community health worker' %>
+      </label>
+      <br>
+      <br>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select" >
+     <%= f.text_field :health_center_id, :class => "mdl-textfield__input", :value => "", :type => "text", :readonly => "", :id => "health_center", :tabIndex => "-1" %>
+       <label class="mdl-textfield__label" for="health_center">Health Center</label>
+
+       <%= link_to new_health_center_path, :class =>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-100", :id => "add_button" do  %>
+        <i class="material-icons">add</i>
+      <% end %>
+
+       <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="health_center">
+         <% @health_centers.each do |health_center| %>
+           <li class="mdl-menu__item">
+             <%= "#{health_center.id}. #{health_center.name}" %>
+           </li>
+         <% end %>
+       </ul>
+    </div>
+    <br>
+    <br>
+
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <%= f.email_field :email, :class => "mdl-textfield__input", :id => "email"%>
+      <%= f.label :email, :class => "mdl-textfield__label", :for => "email"%>
+    </div>
+
+    <br>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <%= f.password_field :password, :class => "mdl-textfield__input", :id => "password", :pattern => ".{"+ @minimum_password_length.to_s + ",}"%>
+      <%= f.label :password, :class => "mdl-textfield__label", :for => "password" %>
+    </div>
+    <br>
+
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+      <%= f.password_field :password_confirmation, :class => "mdl-textfield__input", :id => "password_confirmation", :pattern => ".{"+ @minimum_password_length.to_s + ",}"%>
+      <%= f.label :password_confirmation, :class => "mdl-textfield__label", :for => "password_confirmation"%>
+    </div>
+    <br>
+
+    <% if user_signed_in? %>
+      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <%= f.password_field :current_password, :class => "mdl-textfield__input", :id => "password_confirmation", :pattern => ".{"+ @minimum_password_length.to_s + ",}"%>
+        <%= f.label :current_password, :class => "mdl-textfield__label", :for => "password_confirmation"%>
+      </div>
+    <% end %>
+
+    </br>
+    </br>
+
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-100" type = "submit">
+      <i class="material-icons">exit_to_app</i>
+    </button>
+
+    <% if user_signed_in? %>
+      <%= button_to registration_path(resource_name), :class => "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--red", data: { confirm: "Are you sure?" }, method: :delete do %>
+        <i class="material-icons">delete</i>
+      <% end %>
+    <% end %>
+
+
+
+  <% end %>
