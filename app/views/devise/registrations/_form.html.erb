@@ -115,15 +115,15 @@
     </br>
     </br>
     <div id="buttons_div" >
-      <div id = "no_new_line">
-        <%= button_to registration_path(resource_name), :class => "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-100", method: :update do %>
+      <div id = "form_button">
+        <%= button_to registration_path(resource_name), :class => "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50", method: :update do %>
           <i class="material-icons">exit_to_app</i>
         <% end %>
       </div>
 
       <% if user_signed_in? %>
       &emsp; &emsp;
-        <div id = "no_new_line">
+        <div id = "form_button">
           <%= button_to registration_path(resource_name), :class => "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--red mdl-color-text--cyan-50", data: { confirm: "Are you sure?" }, method: :delete do %>
             <i class="material-icons">delete</i>
           <% end %>
