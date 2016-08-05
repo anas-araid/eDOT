@@ -37,3 +37,13 @@ a:link, a:visited, a:hover, a:active{
     display: inline-block;
     background-color: transparent;
 }
+
+#no_new_line{
+  float:center;
+  width: auto;
+  display:inline-block;
+}
+
+#buttons_div {
+  text-align: center;
+}
