@@ -9,3 +9,7 @@
 10.times do |i|
   HealthCenter.create!(name:"HC #{i}")
 end
+
+10.times do |i|
+  Patient.create!(name: "Youtuber #{i}", surname: "Youtuber #{i}", gender: "Youtuber #{i}", birthdate: "23/7/2016", phone: "324234", address: "Trento", user_id: "1", health_center_id: "1", )
+end
