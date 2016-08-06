@@ -1,7 +1,7 @@
 class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :set_health_centers, :set_users, only: [:new, :edit]
+  before_action :set_health_centers, :set_users, only: [:new, :edit, :create]
 
   # GET /patients
   # GET /patients.json
@@ -80,6 +80,7 @@ class PatientsController < ApplicationController
 
     def set_health_centers
       @health_centers = HealthCenter.all
+      @user_health_center = HealthCenter.all.where(id: current_user.health_center_id).first
     end
 
     # for the selection of which chw cares the patient
