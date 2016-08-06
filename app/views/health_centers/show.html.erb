@@ -1,17 +1,15 @@
-<p>
-  <strong>Name:</strong>
-  <%= @health_center.name %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @health_center.address %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @health_center.phone %>
-</p>
+<ul class="mdl-list">
+  <% { "Name" => @health_center.name, "Address" => @health_center.address, "Phone" => @health_center.phone }.each do |name, content| %>
+    <li class="mdl-list__item mdl-list__item--three-line">
+      <span class="mdl-list__item-primary-content">
+        <span><%= name %></span>
+        <span class="mdl-list__item-text-body">
+          <%= content %>
+        </span>
+      </span>
+    </li>
+  <% end %>
+</ul>
 
 <%= link_to 'Edit', edit_health_center_path(@health_center) %> |
 <%= link_to 'Back', health_centers_path %> |
