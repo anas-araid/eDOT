@@ -14,7 +14,7 @@
   </head>
 
   <body class="mdl-color--cyan-50">
-
+    <!-- ############# MDL HEADER ############# -->
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
@@ -26,7 +26,8 @@
           <p class="mdl-layout--large-screen-only">
             Logged in as &nbsp; <strong> <%= current_user.email %> </strong>
           </p>
-          <!-- Navigation -->
+
+              <!-- ############# MDL NAVIGATION BUTTONS ############# -->
           <nav class="mdl-navigation mdl-layout--large-screen-only">
             <%= link_to "Home", root_path, :class => 'mdl-navigation__link'   %>
             <%= link_to "Health centers", health_centers_path, :class =>'mdl-navigation__link'  %>
@@ -42,6 +43,9 @@
           </nav>
         </div>
       </header>
+
+      <!-- ############# MDL DRAWER WITH HAMBURGER BUTTON ############# -->
+
       <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">e<strong>DOT</strong></span>
         <nav class="mdl-navigation">
@@ -63,6 +67,7 @@
         </nav>
       </div>
       <main class="mdl-layout__content">
+        <!-- ############# NOTICE OR ALERT MESSAGE ############# -->
         <div class="page-content">
           <% if notice %>
               <p class="alert alert-success" id="notice">
@@ -80,7 +85,7 @@
                 </script>
               </p>
             <% end %>
-            <div align="center">
+            <div class = "page_content_div">
               <%= yield %>
             </div>
         </div>

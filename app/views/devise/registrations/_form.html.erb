@@ -54,10 +54,6 @@
      <%= f.text_field :health_center_id, :class => "mdl-textfield__input", :value => "", :type => "text", :readonly => "", :id => "health_center", :tabIndex => "-1" %>
        <label class="mdl-textfield__label" for="health_center">Health Center</label>
 
-       <%= link_to new_health_center_path, :class =>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50", :id => "add_button" do  %>
-        <i class="material-icons">add</i>
-      <% end %>
-
        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="health_center">
          <% @health_centers.each do |health_center| %>
            <li class="mdl-menu__item">
@@ -66,6 +62,10 @@
          <% end %>
        </ul>
     </div>
+
+    <%= link_to new_health_center_path, :class =>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50", :id => "add_button" do  %>
+     <i class="material-icons">add</i>
+   <% end %>
     <br>
     <br>
 
@@ -112,7 +112,7 @@
 
     </br>
     </br>
-    <div id="buttons_div" >
+    <div>
       <div id = "form_button">
         <%= button_to registration_path(resource_name), :class => "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50", method: :update do %>
           <i class="material-icons">exit_to_app</i>
