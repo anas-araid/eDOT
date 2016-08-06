@@ -14,4 +14,5 @@
 </p>
 
 <%= link_to 'Edit', edit_health_center_path(@health_center) %> |
-<%= link_to 'Back', health_centers_path %>
+<%= link_to 'Back', health_centers_path %> |
+<%= link_to 'Delete', health_center_url(@health_center), method: :delete, data: { confirm: 'Are you sure?' } %>
