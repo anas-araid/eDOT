@@ -11,6 +11,6 @@
    "#{@report.user.name} #{@report.user.surname}",
    @report.user_id,
    @report.date,
-   @report.health_status]) =%>
-<% response.headers['Content-Disposition'] = "attachment; filename=  #{@patient.id}_#{@patient.name}_#{@patient.surname}_report.csv " %>
+   @report.health_status]) -%>
+<% response.headers['Content-Disposition'] = "attachment; filename=  #{@patient.id}_#{@patient.name}_#{@patient.surname}_all_reports_#{Time.now.strftime("%d-%m-%Y-%H-%M")}.csv " %>
 <% response.headers['Content-Type'] = 'text/csv'%>

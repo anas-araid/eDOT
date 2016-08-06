@@ -40,8 +40,10 @@
 
 <p>
   <strong>Health Center:</strong>
-  <%= @patient.health_center_id %>
+  <%= @patient.health_center.name %>
 </p>
+
+<!--%= "#{@patient.user.id}"%-->
 
 <%= link_to 'Edit', edit_patient_path(@patient) %> |
 <%= link_to 'Back', patients_path %> |
