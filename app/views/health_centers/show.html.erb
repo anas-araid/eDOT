@@ -10,14 +10,16 @@
     </li>
   <% end %>
 </ul>
-<%= link_to edit_health_center_path(@health_center) do %>
-  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50" id="show_button">
-      <i class="material-icons">mode_edit</i>
-  </button>
-<% end %>
+<div id ="buttons_div">
+  <%= link_to edit_health_center_path(@health_center) do %>
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50" id="form_button">
+        <i class="material-icons">mode_edit</i>
+    </button>
+  <% end %>
 
-<%= link_to health_center_url(@health_center), method: :delete, data: { confirm: 'Are you sure?' } do %>
-  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--red mdl-color-text--cyan-50" id="show_button">
-      <i class="material-icons">delete</i>
-  </button>
+  <%= link_to health_center_url(@health_center), method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--red mdl-color-text--cyan-50" id="form_button">
+        <i class="material-icons">delete</i>
+    </button>
+</div>
 <% end %>
