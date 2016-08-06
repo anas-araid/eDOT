@@ -10,7 +10,17 @@
     </li>
   <% end %>
 </ul>
+<%= link_to edit_health_center_path(@health_center) do %>
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50">
+      <i class="material-icons">mode_edit</i>
+  </button>
+<% end %>
 
-<%= link_to 'Edit', edit_health_center_path(@health_center) %> |
-<%= link_to 'Back', health_centers_path %> |
-<%= link_to 'Delete', health_center_url(@health_center), method: :delete, data: { confirm: 'Are you sure?' } %>
+&emsp; &emsp;
+
+<%= link_to health_center_url(@health_center), method: :delete, data: { confirm: 'Are you sure?' } do %>
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--red mdl-color-text--cyan-50">
+      <i class="material-icons">delete</i>
+  </button>
+
+<% end %>
