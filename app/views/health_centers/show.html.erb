@@ -11,15 +11,13 @@
   <% end %>
 </ul>
 <%= link_to edit_health_center_path(@health_center) do %>
-  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50">
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50" id="show_button">
       <i class="material-icons">mode_edit</i>
   </button>
 <% end %>
 
-&emsp; &emsp;
-
 <%= link_to health_center_url(@health_center), method: :delete, data: { confirm: 'Are you sure?' } do %>
-  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--red mdl-color-text--cyan-50">
+  <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--red mdl-color-text--cyan-50" id="show_button">
       <i class="material-icons">delete</i>
   </button>
 <% end %>
