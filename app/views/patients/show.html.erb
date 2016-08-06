@@ -1,50 +1,34 @@
-<p>
-  <strong>Name:</strong>
-  <%= @patient.name %>
-</p>
+<ul class="mdl-list">
+  <% { "Name" => @patient.name, "Surname" => @patient.surname, "Address" => @patient.address, "Gender" => @patient.gender,
+       "Birthdate" => @patient.birthdate, "Phone" => @patient.phone, "Starting therapy day" => @patient.starting_therapy_day,
+       "Cared by" => "#{@patient.user.name} #{@patient.user.surname} (#{@patient.user.id})",  "Health Center" => @patient.health_center.name }.each do |name, content| %>
+    <li class="mdl-list__item mdl-list__item--three-line">
+      <span class="mdl-list__item-primary-content">
+        <span><%= name %></span>
+        <span class="mdl-list__item-text-body">
+          <%= content %>
+        </span>
+      </span>
+    </li>
+  <% end %>
+</ul>
+<div id ="buttons_div">
+  <%= link_to edit_patient_path(@patient) do %>
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50" id="form_button">
+        <i class="material-icons">mode_edit</i>
+    </button>
+  <% end %>
 
-<p>
-  <strong>Surname:</strong>
-  <%= @patient.surname %>
-</p>
+  <%= link_to patient_url(@patient), method: :delete, data: { confirm: 'Are you sure?' } do %>
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--red mdl-color-text--cyan-50" id="form_button">
+        <i class="material-icons">delete</i>
+    </button>
+  <% end %>
 
-<p>
-  <strong>Address:</strong>
-  <%= @patient.address %>
-</p>
+  <%= link_to patient_reports_path(@patient) do %>
+    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--indigo mdl-color-text--cyan-50" id="form_button">
+        <i class="material-icons">library_books</i>
+    </button>
+  <% end %>
 
-<p>
-  <strong>Gender:</strong>
-  <%= @patient.gender %>
-</p>
-
-<p>
-  <strong>Birthdate:</strong>
-  <%= @patient.birthdate %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @patient.phone %>
-</p>
-
-<p>
-  <strong>Starting therapy day:</strong>
-  <%= @patient.starting_therapy_day %>
-</p>
-
-<p>
-  <strong>Cared by(id):</strong>
-  <%= "#{@patient.user.name} #{@patient.user.surname} (#{@patient.user.id})  "%>
-</p>
-
-<p>
-  <strong>Health Center:</strong>
-  <%= @patient.health_center.name %>
-</p>
-
-<!--%= "#{@patient.user.id}"%-->
-
-<%= link_to 'Edit', edit_patient_path(@patient) %> |
-<%= link_to 'Back', patients_path %> |
-<%= link_to 'Reports', patient_reports_path(@patient) %>
+</div>

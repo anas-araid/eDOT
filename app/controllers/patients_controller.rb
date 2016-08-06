@@ -10,6 +10,7 @@ class PatientsController < ApplicationController
       @patients = Patient.all.where(health_center_id: current_user.health_center_id)
     else
       @patients = Patient.all.where(user_id: current_user.id)
+      puts "-------------->" + @patients.inspect
     end
   end
 
