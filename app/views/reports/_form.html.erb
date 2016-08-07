@@ -11,10 +11,17 @@
     </div>
   <% end %>
 
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select" >
+   <%= f.text_field :user_id, :class => "mdl-textfield__input", :value => "#{current_user.id}. #{current_user.name} #{current_user.surname}", :type => "text", :readonly => "", :id => "user", :tabIndex => "-1" %>
+     <label class="mdl-textfield__label" for="user">Cared by</label>
 
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.number_field :user_id %>
+     <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="user">
+       <% @users.each do |user| %>
+         <li class="mdl-menu__item">
+           <%= "#{user.id}. #{user.name} #{user.surname}" %>
+         </li>
+       <% end %>
+     </ul>
   </div>
 
   <div class="field">
@@ -22,12 +29,25 @@
     <%= f.date_select :date %>
   </div>
 
-  <div class="field">
-    <%= f.label :health_status %>
-    <%= f.text_area :health_status %>
+  <div class="mdl-textfield mdl-js-textfield">
+    <%= f.text_area :health_status, :class => "mdl-textfield__input", :type => "text", :rows => "3", :id => "health_status" %>
+    <%= f.label :health_status, :class => "mdl-textfield__label", :for => "health_status" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div id="buttons_div" >
+    <div id = "form_button">
+      <%= button_to patient_reports_path, :class => "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50", method: :update do %>
+        <i class="material-icons">exit_to_app</i>
+      <% end %>
+    </div>
+
+    <% if form_type=="Edit" %>
+      &emsp; &emsp;
+      <div id = "form_button">
+        <%= button_to patient_report_path(report.patient, report), :class => "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--red mdl-color-text--cyan-50", data: { confirm: "Are you sure?" }, method: :delete do %>
+          <i class="material-icons">delete</i>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 <% end %>

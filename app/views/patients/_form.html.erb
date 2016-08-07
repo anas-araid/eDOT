@@ -99,7 +99,6 @@
     </div>
 
     <% if form_type=="Edit" %>
-      &emsp; &emsp;
       <div id = "form_button">
         <%= button_to patient_path(patient), :class => "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--red mdl-color-text--cyan-50", data: { confirm: "Are you sure?" }, method: :delete do %>
           <i class="material-icons">delete</i>

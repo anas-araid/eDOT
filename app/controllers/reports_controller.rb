@@ -1,6 +1,7 @@
 class ReportsController < ApplicationController
   before_action :set_patient
   before_action :set_report, only: [:show, :edit, :update, :destroy]
+  before_action :set_users, only: [:new, :edit, :create]
   before_action :authenticate_user!
 
   # GET /reports
@@ -88,5 +89,9 @@ class ReportsController < ApplicationController
 
     def set_patient
       @patient = Patient.find(params[:patient_id])
+    end
+
+    def set_users
+      @users = User.all.where(user_type: "chw")
     end
 end
