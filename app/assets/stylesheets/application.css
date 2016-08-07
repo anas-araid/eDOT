@@ -27,7 +27,13 @@
  table, td, th {
    width: 2%;
  }
- td { white-space:pre }
+
+ h1{
+  color:teal;
+  font-family:Roboto;
+  font-size:50px; 
+ }
+
  table {
    margin-bottom: 80px;
  }
