@@ -3,20 +3,18 @@
   <table class = "sortable mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-color--cyan-50">
     <thead>
       <tr>
-        <th class="mdl-data-table__cell--non-numeric mdl-color--teal-400 mdl-color-text--cyan-50">Name</th>
-        <th class="mdl-data-table__cell--non-numeric mdl-color--teal-400 mdl-color-text--cyan-50">Address</th>
-        <th class="mdl-data-table__cell--non-numeric mdl-color--teal-400 mdl-color-text--cyan-50">Phone</th>
-        <th class="mdl-data-table__cell--non-numeric mdl-color--teal-400 mdl-color-text--cyan-50">Show</th>
+        <% %w(Name Address Phone).each do |col_name| %>
+          <th class="mdl-data-table__cell--non-numeric mdl-color--teal-400 mdl-color-text--cyan-50"><%= col_name %></th>
+        <% end %>
       </tr>
     </thead>
 
     <tbody>
       <% @health_centers.each do |health_center| %>
         <tr>
-          <td><%= health_center.name %></td>
-          <td><%= health_center.address %></td>
-          <td><%= health_center.phone %></td>
-          <td><%= link_to 'Show', health_center, :class => "mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--teal-900"%></td>
+          <% [health_center.name, health_center.address, health_center.phone].each do |field| %>
+            <td class="mdl-data-table__cell--non-numeric"><%= link_to field, health_center %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
