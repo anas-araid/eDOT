@@ -4,27 +4,19 @@
   <table class = "sortable mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-color--cyan-50">
     <thead>
       <tr>
-        <th class="mdl-data-table__cell--non-numeric mdl-color--teal-400 mdl-color-text--cyan-50">ID</th>
-        <th class="mdl-data-table__cell--non-numeric mdl-color--teal-400 mdl-color-text--cyan-50">Name</th>
-        <th class="mdl-data-table__cell--non-numeric mdl-color--teal-400 mdl-color-text--cyan-50">Surname</th>
-        <th class="mdl-data-table__cell--non-numeric mdl-color--teal-400 mdl-color-text--cyan-50">Address</th>
-        <th class="mdl-data-table__cell--non-numeric mdl-color--teal-400 mdl-color-text--cyan-50">Health Center</th>
-        <th class="mdl-data-table__cell--non-numeric mdl-color--teal-400 mdl-color-text--cyan-50">Show</th>
-        <!--th class="mdl-data-table__cell--non-numeric mdl-color--teal-400 mdl-color-text--cyan-50">Report</th-->
+        <% ["ID", "Name", "Surname", "Address", "Health Center"].each do |col_name| %>
+          <th class="mdl-data-table__cell--non-numeric mdl-color--teal-400 mdl-color-text--cyan-50"><%= col_name %></th>
+        <% end %>
       </tr>
     </thead>
 
   <tbody>
     <% @patients.each do |patient| %>
       <tr>
-        <td><%= patient.id %></td>
-        <td><%= patient.name %></td>
-        <td><%= patient.surname %></td>
-        <td><%= patient.address %></td>
-        <td><%= patient.health_center.name %></td>
-        <td><%= link_to 'Show', patient, :class => "mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--teal-900"%></td>
-        <!--td><%= link_to 'Reports', patient_reports_path(patient), :class => "mdl-button mdl-js-button mdl-js-ripple-effect" %></td-->
-      </tr>
+        <% [patient.id, patient.name, patient.surname, patient.address, patient.health_center.name].each do |field| %>
+          <td class="mdl-data-table__cell--non-numeric"><%= link_to field, patient %></td>
+        <% end %>
+        </tr>
     <% end %>
   </tbody>
 </table>

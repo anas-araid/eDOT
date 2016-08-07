@@ -3,22 +3,18 @@
   <table class = "sortable mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-color--cyan-50">
     <thead>
       <tr>
-        <th class="mdl-data-table__cell--non-numeric mdl-color--teal-400 mdl-color-text--cyan-50">Patient ID</th>
-        <th class="mdl-data-table__cell--non-numeric mdl-color--teal-400 mdl-color-text--cyan-50">Name</th>
-        <th class="mdl-data-table__cell--non-numeric mdl-color--teal-400 mdl-color-text--cyan-50">Surname</th>
-        <th class="mdl-data-table__cell--non-numeric mdl-color--teal-400 mdl-color-text--cyan-50">Date</th>
-        <th class="mdl-data-table__cell--non-numeric mdl-color--teal-400 mdl-color-text--cyan-50">Show</th>
+        <% [ "Patient ID", "Name", "Surname", "Date"].each do |col_name| %>
+          <th class="mdl-data-table__cell--non-numeric mdl-color--teal-400 mdl-color-text--cyan-50"><%= col_name %></th>
+        <% end %>
       </tr>
     </thead>
 
     <tbody>
       <% @patient.reports.each do |report| %>
         <tr>
-          <td><%= report.patient_id %></td>
-          <td><%= report.patient.name %></td>
-          <td><%= report.patient.surname %></td>
-          <td><%= report.date %></td>
-          <td><%= link_to 'Show', patient_report_url(report.patient, report), :class => "mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--teal-900" %></td>
+          <% [report.patient_id, report.patient.name, report.patient.surname, report.date ].each do |field| %>
+            <td class="mdl-data-table__cell--non-numeric"><%= link_to field, patient_report_url(report.patient, report) %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>
