@@ -7,6 +7,9 @@ class Patient < ApplicationRecord
 
   scope :name_filter, -> (name) { where("name like ?", "%#{name}%") }
   scope :surname_filter, -> (surname) { where("surname like ?", "%#{surname}%") }
+  scope :address_filter, -> (address) { where("address like ?", "%#{address}%") }
+  scope :gender_filter, -> (gender) { where(gender: gender) }
+  scope :phone_filter, -> (phone) { where("phone like ?", "%#{phone}%") }
 
 
   #validate :valid_address

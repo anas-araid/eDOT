@@ -96,7 +96,7 @@ class PatientsController < ApplicationController
     end
 
     def filtering_params(params)
-      params.slice(:name_filter, :surname_filter)
+      params.slice(:name_filter, :surname_filter, :address_filter, :gender_filter, :phone_filter)
     end
 
 
