@@ -12,23 +12,23 @@
     </li>
   <% end %>
 </ul>
-<div id ="buttons_div">
-  <%= link_to edit_patient_path(@patient) do %>
-    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50" id="form_button">
-        <i class="material-icons">mode_edit</i>
-    </button>
-  <% end %>
 
-  <%= link_to patient_url(@patient), method: :delete, data: { confirm: 'Are you sure?' } do %>
-    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--red mdl-color-text--cyan-50" id="form_button">
+  <div class="backdrop"></div>
+  <%= link_to patient_url(@patient), method: :delete, data: { confirm: 'Are you sure?' } , :id => "floating-button-link" do %>
+    <div class="fab child mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-color--red-500 mdl-color-text--cyan-50" data-subitem="3">
         <i class="material-icons">delete</i>
-    </button>
-  <% end %>
-
-  <%= link_to patient_reports_path(@patient) do %>
-    <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--indigo mdl-color-text--cyan-50" id="form_button">
-        <i class="material-icons">library_books</i>
-    </button>
-  <% end %>
-
-</div>
+    </div>
+  <%end%>
+  <%= link_to patient_reports_path(@patient), :id => "floating-button-link" do %>
+    <div class="fab child mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-color--indigo-500 mdl-color-text--cyan-50" data-subitem="2">
+      <i class="material-icons">library_books</i>
+    </div>
+  <%end%>
+  <%= link_to edit_patient_path(@patient), :id => "floating-button-link" do %>
+    <div class="fab child mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-color--orange-500 mdl-color-text--cyan-50" data-subitem="1">
+      <i class="material-icons">mode_edit</i>
+    </div>
+  <%end%>
+    <div class="fab mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50 bottom-right-fixed" id="masterfab">
+      <i class="material-icons">settings</i>
+    </div>
