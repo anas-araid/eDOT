@@ -5,6 +5,10 @@ class Patient < ApplicationRecord
   validates :name, :surname, :gender, :birthdate, presence:true
   validates :phone, :phone_number => {:format => /^[\d-]*$/}
 
+  scope :name_s, -> (name) { where name: name }
+  scope :surname_s, -> (surname) { where surname: surname }
+
+
   #validate :valid_address
 
   def valid_address

@@ -10,8 +10,12 @@ class PatientsController < ApplicationController
       @patients = Patient.all.where(health_center_id: current_user.health_center_id)
     else
       @patients = Patient.all.where(user_id: current_user.id)
-      puts "-------------->" + @patients.inspect
     end
+    @patients = Patient.where(nil)
+    filtering_params(params).each do |key, value|
+      @patients = @patients.public_send(key, value) if value.present?
+    end
+
   end
 
   # GET /patients/1
@@ -88,5 +92,10 @@ class PatientsController < ApplicationController
     def set_users
       @users = User.all.where(user_type: "chw")
     end
+
+    def filtering_params(params)
+      params.slice(:name_s, :surname_s)
+    end
+
 
 end
