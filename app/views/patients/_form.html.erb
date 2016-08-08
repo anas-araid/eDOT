@@ -94,14 +94,22 @@
   <div id="buttons_div" >
     <div id = "form_button">
       <%= button_to patients_path, :class => "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50", method: :update do %>
-        <i class="material-icons">exit_to_app</i>
+        <i class="material-icons">send</i>
       <% end %>
     </div>
+
+
+
 
     <% if form_type=="Edit" %>
       <div id = "form_button">
         <%= button_to patient_path(patient), :class => "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--red mdl-color-text--cyan-50", data: { confirm: "Are you sure?" }, method: :delete do %>
           <i class="material-icons">delete</i>
+        <% end %>
+      </div>
+      <div id = "form_button">
+        <%= link_to patient, :class => "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50" do %>
+          <i class="material-icons">person</i>
         <% end %>
       </div>
     <% end %>
