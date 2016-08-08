@@ -11,14 +11,13 @@ class PatientsController < ApplicationController
     else
       @patients = Patient.all.where(user_id: current_user.id)
     end
-    @params = false
+    @params = {} if @params.nil?
     filtering_params(params).each do |key, value|
       if value.present?
         @patients = @patients.public_send(key, value)
-        @params = true
+        @params[key] = value
       end
     end
-    return @patients
   end
 
   # GET /patients/1
