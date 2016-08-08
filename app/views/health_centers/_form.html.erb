@@ -11,22 +11,45 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <%= f.text_field :name, :class => "mdl-textfield__input", :id => "name" %>
+    <%= f.label :name, :class => "mdl-textfield__label", :for => "name" %>
+  </div>
+  <br>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <%= f.text_field :address, :class => "mdl-textfield__input", :id => "address" %>
+    <%= f.label :address, :class => "mdl-textfield__label", :for => "address" %>
+  </div>
+  <br>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <%= f.number_field :phone, :class => "mdl-textfield__input", :id => "phone" %>
+    <%= f.label :phone, :class => "mdl-textfield__label", :for => "phone" %>
+  </div>
+  <br>
+
+  <div id="buttons_div" >
+    <div id = "form_button">
+      <%= button_to health_centers_path, :class => "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50", method: :update do %>
+        <i class="material-icons">send</i>
+      <% end %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :address %>
-    <%= f.text_field :address %>
-  </div>
+  <% if form_type=="Edit" %>
 
-  <div class="field">
-    <%= f.label :phone %>
-    <%= f.text_field :phone %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="backdrop"></div>
+    <%= link_to health_center_url(@health_center), method: :delete, data: { confirm: 'Are you sure?' }, :id => "floating-button-link" do %>
+      <div class="fab child mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-color--red-500 mdl-color-text--cyan-50" data-subitem="2">
+          <i class="material-icons">delete</i>
+      </div>
+    <%end%>
+    <%= link_to health_center, :id => "floating-button-link" do %>
+      <div class="fab child mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-color--orange-500 mdl-color-text--cyan-50" data-subitem="1">
+        <i class="material-icons">local_hospital</i>
+      </div>
+    <%end%>
+      <div class="fab mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50 bottom-right-fixed" id="masterfab">
+        <i class="material-icons">settings</i>
+      </div>
+  <% end %>
 <% end %>
