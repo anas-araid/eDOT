@@ -1,4 +1,5 @@
 <h1>Patients</h1>
+<%= render 'filters_form' %>
 <div style = "overflow-x:auto;">
 
   <table class = "sortable mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-color--cyan-50">
@@ -25,6 +26,8 @@
 </table>
 </div>
 <br>
+<br>
+
 <div>
   <%= link_to new_patient_path, :class => "mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50 bottom-right-fixed" do %>
     <i class="material-icons">add</i>

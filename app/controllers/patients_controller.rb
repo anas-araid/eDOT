@@ -11,11 +11,10 @@ class PatientsController < ApplicationController
     else
       @patients = Patient.all.where(user_id: current_user.id)
     end
-    @patients = Patient.where(nil)
     filtering_params(params).each do |key, value|
       @patients = @patients.public_send(key, value) if value.present?
     end
-
+    return @patients
   end
 
   # GET /patients/1
@@ -94,7 +93,8 @@ class PatientsController < ApplicationController
     end
 
     def filtering_params(params)
-      params.slice(:name_s, :surname_s)
+      puts "--------------> " + params.inspect
+      params.slice(:name_filter, :surname_filter)
     end
 
 

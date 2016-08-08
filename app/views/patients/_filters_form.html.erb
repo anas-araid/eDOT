@@ -1,0 +1,13 @@
+<%= form_tag("", method: "get") do %>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <%= text_field_tag 'name_filter', nil, placeholder: 'Enter search term...', :class => "mdl-textfield__input" %>
+    <%= label_tag "name_filter", "Name filter", :class => "mdl-textfield__label" %>
+  </div>
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <%= text_field_tag 'surname_filter', nil, placeholder: 'Enter search term...', :class => "mdl-textfield__input" %>
+    <%= label_tag "surname_filter", "Surname filter", :class => "mdl-textfield__label" %>
+  </div>
+  <button class = "mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50" type = "submit">
+    <i class="material-icons">search</i>
+  </button>
+<% end %>
