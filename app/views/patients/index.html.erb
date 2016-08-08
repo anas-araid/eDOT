@@ -1,5 +1,7 @@
 <h1>Patients</h1>
-<%= render 'filters_form' %>
+<div id="filters" style="display:none">
+  <%= render 'filters_form' %>
+</div>
 <div style = "overflow-x:auto;">
 
   <table class = "sortable mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-color--cyan-50">
@@ -28,6 +30,11 @@
 <br>
 
 <div class="backdrop"></div>
+<%= link_to "", :id => "floating-button-link",  :onclick => "toggle_visibility('filters');return false;" do %>
+  <div class="fab child mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-color--orange-500 mdl-color-text--cyan-50" data-subitem="2">
+    <i class="material-icons">search</i>
+  </div>
+<%end%>
 
 <%= link_to new_patient_path, :id => "floating-button-link" do %>
   <div class="fab child mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-color--pink-500 mdl-color-text--cyan-50" data-subitem="1">
