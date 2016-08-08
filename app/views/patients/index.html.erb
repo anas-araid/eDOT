@@ -25,8 +25,17 @@
 </table>
 </div>
 <br>
-<div>
-  <%= link_to new_patient_path, :class => "mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50 bottom-right-fixed" do %>
+
+
+
+
+<div class="backdrop"></div>
+
+<%= link_to new_patient_path, :id => "floating-button-link" do %>
+  <div class="fab child mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-color--pink-500 mdl-color-text--cyan-50" data-subitem="1">
     <i class="material-icons">add</i>
-  <% end %>
-</div>
+  </div>
+<%end%>
+  <div class="fab mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50 bottom-right-fixed" id="masterfab">
+    <i class="material-icons">settings</i>
+  </div>
