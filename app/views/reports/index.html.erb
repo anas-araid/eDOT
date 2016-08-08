@@ -13,7 +13,10 @@
       <% @patient.reports.each do |report| %>
         <tr>
           <% [report.patient_id, report.patient.name, report.patient.surname, report.date ].each do |field| %>
-            <td class="mdl-data-table__cell--non-numeric"><%= link_to field, patient_report_url(report.patient, report) %></td>
+            <td class="mdl-data-table__cell--non-numeric">
+              <% field = "" if field.nil?%>
+              <%= link_to field, patient_report_url(report.patient, report) %>
+            </td>
           <% end %>
         </tr>
       <% end %>
