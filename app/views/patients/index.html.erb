@@ -1,5 +1,9 @@
 <h1>Patients</h1>
-<div id="filters" style="display:none">
+<% if @params %>
+  <div id="filters" style="display:block">
+<% else %>
+  <div id="filters" style="display:none">
+<% end %>
   <%= render 'filters_form' %>
 </div>
 <div style = "overflow-x:auto;">
