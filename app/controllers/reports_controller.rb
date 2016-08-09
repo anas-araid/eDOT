@@ -58,6 +58,9 @@ class ReportsController < ApplicationController
   def update
     respond_to do |format|
       if @report.update(report_params)
+        Position.create!(patient_id: @report.patient_id,
+        latitude: Geocoder.coordinates(@report.address)[0] ,
+        longitude: Geocoder.coordinates(@report.address)[1])
         format.html { redirect_to patient_report_url(@report.patient, @report), notice: 'Report was successfully updated.' }
         format.json { render :show, status: :ok, location: @report }
       else
