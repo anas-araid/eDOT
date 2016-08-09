@@ -2,7 +2,7 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :set_health_centers, :set_users, only: [:new, :edit, :create]
-  has_scope :by_name, :by_surname
+  has_scope :by_name, :by_surname, :by_address
 
   # GET /patients
   # GET /patients.json

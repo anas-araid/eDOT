@@ -8,7 +8,13 @@
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
     <%= text_field_tag :by_surname, @params[:by_surname], class: 'mdl-textfield__input' %>
     <!--input class="mdl-textfield__input" type="text" id="by_name"-->
-    <label class="mdl-textfield__label" for="by_name">Text...</label>
+    <label class="mdl-textfield__label" for="by_surname">Text...</label>
+  </div>
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <%= text_field_tag :by_address, @params[:by_address], class: 'mdl-textfield__input' %>
+    <!--input class="mdl-textfield__input" type="text" id="by_name"-->
+    <label class="mdl-textfield__label" for="by_address">Text...</label>
   </div>
 
   <%= submit_tag("Search") %>
