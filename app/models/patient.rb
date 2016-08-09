@@ -8,9 +8,9 @@ class Patient < ApplicationRecord
   scope :by_name, -> (name) { where("name like ?", "%#{name}%") }
   scope :by_surname, -> (surname) { where("surname like ?", "%#{surname}%") }
   scope :by_address, -> (address) { where("address like ?", "%#{address}%") }
-  scope :gender_filter, -> (gender) { where(gender: gender) }
-  scope :phone_filter, -> (phone) { where("phone like ?", "%#{phone}%") }
-
+  scope :by_phone, -> (phone) { where("phone like ?", "%#{phone}%") }
+  scope :by_gender, -> (gender) { where(gender: gender) }
+#  scope :by_birthdate, -> (before_date, after_date) { where("birthdate BETWEEN ? AND ?", before_date, after_date )}
 
   #validate :valid_address
 
