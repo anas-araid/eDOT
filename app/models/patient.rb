@@ -6,6 +6,11 @@ class Patient < ApplicationRecord
   validates :phone, :phone_number => {:format => /^[\d-]*$/}
 
   scope :by_name, -> (name) { where("name like ?", "%#{name}%") }
+  scope :by_surname, -> (surname) { where("surname like ?", "%#{surname}%") }
+  scope :address_filter, -> (address) { where("address like ?", "%#{address}%") }
+  scope :gender_filter, -> (gender) { where(gender: gender) }
+  scope :phone_filter, -> (phone) { where("phone like ?", "%#{phone}%") }
+
 
   #validate :valid_address
 
