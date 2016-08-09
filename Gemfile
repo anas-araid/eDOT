@@ -12,6 +12,8 @@ gem 'devise'
 
 gem 'validates_phone_number'
 
+gem 'has_scope'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
