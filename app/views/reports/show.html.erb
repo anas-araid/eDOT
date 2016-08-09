@@ -19,7 +19,7 @@
 
 
   <div class="backdrop"></div>
-  <%= link_to patient_url(@patient), method: :delete, data: { confirm: 'Are you sure?' }, :id => "floating-button-link" do %>
+  <%= link_to patient_report_path(@report.patient, @report), method: :delete, data: { confirm: 'Are you sure?' }, :id => "floating-button-link" do %>
     <div class="fab child mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-color--red-500 mdl-color-text--cyan-50" data-subitem="4">
         <i class="material-icons">delete</i>
     </div>
