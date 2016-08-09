@@ -1,11 +1,4 @@
 <h1>Patients</h1>
-<% if not @params.empty? %>
-  <div id="filters" style="display:block">
-<% else %>
-  <div id="filters" style="display:none">
-<% end %>
-  <%= render 'filters_form' %>
-</div>
 <div style = "overflow-x:auto;">
 
   <table class = "sortable mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-color--cyan-50">

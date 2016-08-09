@@ -2,6 +2,7 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :set_health_centers, :set_users, only: [:new, :edit, :create]
+  has_scope :by_name
 
   # GET /patients
   # GET /patients.json
@@ -10,13 +11,6 @@ class PatientsController < ApplicationController
       @patients = Patient.all.where(health_center_id: current_user.health_center_id)
     else
       @patients = Patient.all.where(user_id: current_user.id)
-    end
-    @params = {} if @params.nil?
-    filtering_params(params).each do |key, value|
-      if value.present?
-        @patients = @patients.public_send(key, value)
-        @params[key] = value
-      end
     end
   end
 
@@ -94,10 +88,5 @@ class PatientsController < ApplicationController
     def set_users
       @users = User.all.where(user_type: "chw")
     end
-
-    def filtering_params(params)
-      params.slice(:name_filter, :surname_filter, :address_filter, :gender_filter, :phone_filter)
-    end
-
 
 end
