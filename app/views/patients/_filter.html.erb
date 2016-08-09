@@ -1,12 +1,12 @@
 <%= form_tag "", method: :get do %>
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <%= text_field_tag :by_name, "", class: 'mdl-textfield__input' %>
+    <%= text_field_tag :by_name, @params[:by_name],class: 'mdl-textfield__input' %>
     <!--input class="mdl-textfield__input" type="text" id="by_name"-->
     <label class="mdl-textfield__label" for="by_name">Text...</label>
   </div>
 
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <%= text_field_tag :by_surname, "", class: 'mdl-textfield__input' %>
+    <%= text_field_tag :by_surname, @params[:by_surname], class: 'mdl-textfield__input' %>
     <!--input class="mdl-textfield__input" type="text" id="by_name"-->
     <label class="mdl-textfield__label" for="by_name">Text...</label>
   </div>
