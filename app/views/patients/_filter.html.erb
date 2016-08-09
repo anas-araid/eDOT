@@ -18,6 +18,7 @@
     <%= number_field_tag :by_phone, @params[:by_phone], class: 'mdl-textfield__input' %>
     <label class="mdl-textfield__label" for="by_phone">Phone number</label>
   </div>
+  <br>
 
   <label for="by_gender">Gender</label>
   <% %w(all male female).each do |gender|%>
@@ -26,8 +27,12 @@
           <%= "checked" if @params[:by_gender]==gender or gender=="all" %> >
       <span class="mdl-radio__label"><%= gender.capitalize %></span>
     </label>
-
   <% end %>
+
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <%= number_field_tag :by_chw, @params[:by_chw], class: 'mdl-textfield__input' %>
+    <label class="mdl-textfield__label" for="by_phone">Cared by</label>
+  </div>
 
 
   <%= submit_tag("Search") %>

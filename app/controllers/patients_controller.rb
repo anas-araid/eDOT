@@ -2,19 +2,20 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :set_health_centers, :set_users, only: [:new, :edit, :create]
-  has_scope :by_name, :by_surname, :by_address, :by_phone, :by_gender
-#  has_scope :by_birthdate, :using => [:before_date, :after_date]
+  has_scope :by_name, :by_surname, :by_address, :by_phone, :by_gender, :by_chw
+
 
   # GET /patients
   # GET /patients.json
   def index
+    @patients = apply_scopes(Patient).all
     if current_user.user_type=="doctor"
-      @patients = Patient.all.where(health_center_id: current_user.health_center_id)
+      @patients = @patients.where(health_center_id: current_user.health_center_id)
     else
-      @patients = Patient.all.where(user_id: current_user.id)
+      @patients = @patients.where(user_id: current_user.id)
     end
     @params = params
-    @patients = apply_scopes(Patient).all
+
   end
 
   # GET /patients/1
