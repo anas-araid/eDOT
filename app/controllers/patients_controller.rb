@@ -12,6 +12,7 @@ class PatientsController < ApplicationController
     else
       @patients = Patient.all.where(user_id: current_user.id)
     end
+    @patients = apply_scopes(Patient).all
   end
 
   # GET /patients/1
