@@ -47,7 +47,7 @@
         locations.push(["<%= @patient.name  %>", <%=pos.latitude%>, <%=pos.longitude%>])
       <% end %>
       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 10,
+        zoom: 9,
         center: new google.maps.LatLng(<%=@positions.first.latitude%>, <%=@positions.first.longitude%>),
         mapTypeId: google.maps.MapTypeId.ROADMAP
       });
@@ -63,6 +63,13 @@
             icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
             map: map
           });
+          var infoWindow = new google.maps.InfoWindow();
+          var windowLatLng = new google.maps.LatLng(43.25,-68.03);
+          infoWindow.setOptions({
+              content: "Last position.",
+              position: myLatLng,
+          });
+          infoWindow.open(map, marker);
         } else {
 
         marker = new google.maps.Marker({
@@ -90,7 +97,7 @@
     var infoWindow = new google.maps.InfoWindow();
     var windowLatLng = new google.maps.LatLng(43.25,-68.03);
     infoWindow.setOptions({
-        content: "Patient address.",
+        content: "Address.",
         position: myLatLng,
     });
     infoWindow.open(map, PatMarker);

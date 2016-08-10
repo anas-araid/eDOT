@@ -74,6 +74,7 @@ class ReportsController < ApplicationController
   # DELETE /reports/1.json
   def destroy
     @report.destroy
+    @report.position.destroy
     respond_to do |format|
       format.html { redirect_to patient_reports_url(@patient), notice: 'Report was successfully destroyed.' }
       format.json { head :no_content }
