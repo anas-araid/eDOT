@@ -1,7 +1,7 @@
 class ReportsController < ApplicationController
   before_action :set_patient
   before_action :set_report, only: [:show, :edit, :update, :destroy]
-  before_action :set_users, only: [:new, :edit, :create]
+  before_action :set_users, only: [:new, :edit, :update, :create]
   before_action :authenticate_user!
 
   # GET /reports
@@ -41,9 +41,9 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       if @report.save
-        Position.create!(patient_id: @report.patient_id,
+        @report.position=(Position.create!(patient_id: @report.patient_id,
         latitude: Geocoder.coordinates(@report.address)[0] ,
-        longitude: Geocoder.coordinates(@report.address)[1])
+        longitude: Geocoder.coordinates(@report.address)[1]))
         format.html { redirect_to patient_report_url(@report.patient, @report), notice: 'Report was successfully created.' }
         format.json { render :show, status: :created, location: @report }
       else
@@ -58,7 +58,7 @@ class ReportsController < ApplicationController
   def update
     respond_to do |format|
       if @report.update(report_params)
-        Position.create!(patient_id: @report.patient_id,
+        @report.position.update(
         latitude: Geocoder.coordinates(@report.address)[0] ,
         longitude: Geocoder.coordinates(@report.address)[1])
         format.html { redirect_to patient_report_url(@report.patient, @report), notice: 'Report was successfully updated.' }

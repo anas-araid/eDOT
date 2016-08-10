@@ -1,7 +1,7 @@
 <ul class="mdl-list">
   <% { "Name" => @report.patient.name, "Surname" => @report.patient.surname,
        "Compiled by" => "#{@report.user_id}. #{@report.user.name} #{@report.user.surname}",
-       "Date" => @report.date, "Health status" => @report.health_status }.each do |name, content| %>
+       "Date" => @report.date, "Health status" => @report.health_status, "Patient position" => @report.address }.each do |name, content| %>
     <li class="mdl-list__item mdl-list__item--three-line">
       <span class="mdl-list__item-primary-content">
         <span><%= name %></span>

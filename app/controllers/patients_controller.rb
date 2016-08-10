@@ -2,7 +2,6 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
   before_action :set_health_centers, :set_users, only: [:new, :edit, :create]
-
   # GET /patients
   # GET /patients.json
   def index
@@ -25,6 +24,7 @@ class PatientsController < ApplicationController
   # GET /patients/1.json
   def show
     @positions = Position.where(patient_id: @patient.id)
+    @reports = Report.where(patient_id: @patient.id)
   end
 
   # GET /patients/new
@@ -43,6 +43,9 @@ class PatientsController < ApplicationController
 
     respond_to do |format|
       if @patient.save
+        Position.create!(patient_id: patient_id,
+        latitude: Geocoder.coordinates(@report.address)[0] ,
+        longitude: Geocoder.coordinates(@report.address)[1])
         format.html { redirect_to @patient, notice: 'Patient was successfully created.' }
         format.json { render :show, status: :created, location: @patient }
       else

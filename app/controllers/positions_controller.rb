@@ -69,6 +69,6 @@ class PositionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def position_params
-      params.require(:position).permit(:patient_id, :latitude, :longitude)
+      params.require(:position).permit(:patient_id, :latitude, :longitude, :report_id)
     end
 end

@@ -35,7 +35,7 @@
 
 
 
-
+<%if not @reports.empty?%>
 
 
     <div id="map" style="width: 100%; height: 300px;"></div>
@@ -57,10 +57,18 @@
       var marker, i;
 
       for (i = 0; i < locations.length; i++) {
+        if (i == locations.length - 1){
+            marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            icon: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+            map: map
+          });
+        } else {
+
         marker = new google.maps.Marker({
           position: new google.maps.LatLng(locations[i][1], locations[i][2]),
           map: map
-        });
+        });}
 
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
@@ -70,4 +78,22 @@
           }
         })(marker, i));
       }
+      var infoWindow = new google.maps.InfoWindow();
+      var myLatLng = {lat: <%=Geocoder.coordinates(@patient.address)[0]%>, lng: <%=Geocoder.coordinates(@patient.address)[1]%>}
+      var PatMarker = new google.maps.Marker({
+        position: myLatLng,
+        icon: "http://maps.google.com/mapfiles/ms/icons/green-dot.png",
+        map: map
+      });
+
+
+    var infoWindow = new google.maps.InfoWindow();
+    var windowLatLng = new google.maps.LatLng(43.25,-68.03);
+    infoWindow.setOptions({
+        content: "Patient address.",
+        position: myLatLng,
+    });
+    infoWindow.open(map, PatMarker);
+
     </script>
+<%end%>
