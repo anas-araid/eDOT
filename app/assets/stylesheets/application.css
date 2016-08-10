@@ -61,6 +61,10 @@
   margin: -50px 0px 0px 20px;
 }
 
+#search_button{
+  margin: -50px 0px 0px 200px;
+}
+
 
 /* visited link */
 a:link, a:visited, a:hover, a:active{
