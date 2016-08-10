@@ -1,7 +1,10 @@
 class PatientsController < ApplicationController
+  #before_action :cleanup_pagination_params
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-  before_action :set_health_centers, :set_users, only: [:new, :edit, :create]
+  before_action :set_health_centers, only: [:new, :edit, :create]
+  before_action :set_users, only: [:new, :edit, :create, :index]
+
   has_scope :by_name, :by_surname, :by_address, :by_phone, :by_gender, :by_chw
 
 
@@ -91,6 +94,10 @@ class PatientsController < ApplicationController
     # for the selection of which chw cares the patient
     def set_users
       @users = User.all.where(user_type: "chw")
+    end
+
+    def cleanup_pagination_params
+      params[:by_chw] = params[:by_chw].to_i
     end
 
 end
