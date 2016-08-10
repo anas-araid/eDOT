@@ -1,8 +1,8 @@
 <h1>Patients</h1>
 
-
-
+<div id="filters">
   <%= render 'filter'%>
+</div>
 <div style = "overflow-x:auto;z-index:-1;">
   <table class = "sortable mdl-data-table mdl-js-data-table mdl-shadow--2dp mdl-color--cyan-50">
     <thead>
@@ -41,6 +41,8 @@
     <i class="material-icons">add</i>
   </div>
 <%end%>
+<a href = "" onclick="toggle_visibility('filters');return false;">
   <div class="fab mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50 bottom-right-fixed" id="masterfab">
     <i class="material-icons">settings</i>
   </div>
+</a>
