@@ -1,57 +1,78 @@
 <%= form_tag "", method: :get do %>
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <%= text_field_tag :by_name, @params[:by_name],class: 'mdl-textfield__input' %>
-    <label class="mdl-textfield__label" for="by_name">Name</label>
-  </div>
+<span>
+  <ul>
+    <li>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <%= text_field_tag :by_name, @params[:by_name],class: 'mdl-textfield__input' %>
+          <label class="mdl-textfield__label" for="by_name">Name</label>
+        </div>
+      </li>
 
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <%= text_field_tag :by_surname, @params[:by_surname], class: 'mdl-textfield__input' %>
-    <label class="mdl-textfield__label" for="by_surname">Surname</label>
-  </div>
+      <li>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <%= text_field_tag :by_surname, @params[:by_surname], class: 'mdl-textfield__input' %>
+          <label class="mdl-textfield__label" for="by_surname">Surname</label>
+        </div>
+      </li>
 
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <%= text_field_tag :by_address, @params[:by_address], class: 'mdl-textfield__input' %>
-    <label class="mdl-textfield__label" for="by_address">Address</label>
-  </div>
-
-  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <%= number_field_tag :by_phone, @params[:by_phone], class: 'mdl-textfield__input' %>
-    <label class="mdl-textfield__label" for="by_phone">Phone number</label>
-  </div>
-  <br>
-
-  <label for="by_gender">Gender</label>
-  <% %w(all male female).each do |gender|%>
-    <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="<%= gender %>">
-        <input type="radio" id="<%= gender %>" class="mdl-radio__button" name="by_gender" value="<%= gender unless gender=="all" %>"
-          <%= "checked" if @params[:by_gender]==gender or gender=="all" %> >
-      <span class="mdl-radio__label"><%= gender.capitalize %></span>
-    </label>
-  <% end %>
-
-  <br>
-
-  <% if current_user.user_type=="doctor" %>
-
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select" >
-    <%= text_field_tag :by_chw, @params[:by_chw], class: 'mdl-textfield__input', readonly: "", id: "chw", tabIndex: "-1" %>
-     <%#= text_field :user_id, :class => "mdl-textfield__input", :value => "#{current_user.id}. #{current_user.name} #{current_user.surname}", :type => "text", :readonly => "", :id => "user", :tabIndex => "-1" %>
-       <label class="mdl-textfield__label" for="chw">Cared by</label>
-
-       <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="chw">
-         <li class="mdl-menu__item">
-           <%= nil %>
-         </li>
-         <% @users.each do |user| %>
-           <li class="mdl-menu__item">
-             <%= "#{user.id}. #{user.name} #{user.surname}" %>
-           </li>
-         <% end %>
-       </ul>
-    </div>
-  <% end %>
+      <li>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <%= text_field_tag :by_address, @params[:by_address], class: 'mdl-textfield__input' %>
+          <label class="mdl-textfield__label" for="by_address">Address</label>
+        </div>
+      </li>
 
 
-  <%= submit_tag("Search") %>
+
+      <li>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <%= number_field_tag :by_phone, @params[:by_phone], class: 'mdl-textfield__input' %>
+          <label class="mdl-textfield__label" for="by_phone">Phone number</label>
+        </div>
+
+      </li>
+    <li>
+
+
+        <span class="mdl-list__item-primary-content">Gender:&nbsp;
+        <% %w(all male female).each do |gender|%>
+          <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="<%= gender %>">
+              <input type="radio" id="<%= gender %>" class="mdl-radio__button" name="by_gender" value="<%= gender unless gender=="all" %>"
+                <%= "checked" if @params[:by_gender]==gender or gender=="all" %> >
+            <span class="mdl-radio__label"><%= gender.capitalize %> &nbsp;  </span>
+          </label>
+        <% end %>
+        </span>
+      </li>
+
+
+      <% if current_user.user_type=="doctor" %>
+
+        <li>
+
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select" >
+        <%= text_field_tag :by_chw, @params[:by_chw], class: 'mdl-textfield__input', readonly: "", id: "chw", tabIndex: "-1" %>
+         <%#= text_field :user_id, :class => "mdl-textfield__input", :value => "#{current_user.id}. #{current_user.name} #{current_user.surname}", :type => "text", :readonly => "", :id => "user", :tabIndex => "-1" %>
+           <label class="mdl-textfield__label" for="chw">Cared by</label>
+
+           <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="chw">
+             <li class="mdl-menu__item">
+               <%= nil %>
+             </li>
+             <% @users.each do |user| %>
+               <li class="mdl-menu__item">
+                 <%= "#{user.id}. #{user.name} #{user.surname}" %>
+               </li>
+             <% end %>
+           </ul>
+        </div>
+
+        </li>
+      <% end %>
+      <%= link_to patients_path, :class => "mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50", method: :index do %>
+        <i class="material-icons">search</i>
+      <% end %>
+</ul>
+</span>
 
 <% end %>
