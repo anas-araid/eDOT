@@ -17,7 +17,10 @@
             type="text/javascript"></script>
     <script type="text/javascript">
       var locations = [];
+      <%puts(@positions.inspect)%>
       <% @positions.each do |pos|%>
+        <%puts("---------------")%>
+        <%puts(pos)%>
         locations.push(["<%= Patient.name  %>", <%=pos.latitude%>, <%=pos.longitude%>]);
       <% end %>
         var posLat = <%=begin @positions.last.latitude rescue -11.202692 end%>;
@@ -41,21 +44,6 @@
 
       var marker, i;
       for (i = 0; i < locations.length; i++) {
-        if (i == locations.length - 1){
-            marker = new google.maps.Marker({
-            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-            icon: red_marker,
-            animation: google.maps.Animation.BOUNCE,
-            map: map
-          });
-          var infoWindow = new google.maps.InfoWindow();
-          var windowLatLng = new google.maps.LatLng(43.25,-68.03);
-          infoWindow.setOptions({
-              content: "Last position.",
-              position: myLatLng,
-          });
-          infoWindow.open(map, marker);
-        } else {
 
         marker = new google.maps.Marker({
           position: new google.maps.LatLng(locations[i][1], locations[i][2]),
@@ -68,7 +56,7 @@
             infowindow.open(map, marker);
           }
         })(marker, i));
-      }
+
       }
     </script>
 <%end%>
