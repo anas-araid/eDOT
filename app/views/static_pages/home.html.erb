@@ -10,5 +10,55 @@
   <% if not user_signed_in? %>
     <%= link_to "Sign up", new_user_registration_path, :class =>'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--teal-400 mdl-color-text--cyan-50'  %>
     <%= link_to "Login", new_user_session_path, :class =>'mdl-button mdl-js-button mdl-js-ripple-effect mdl-color-text--teal-900'  %>
-  <% end %>
+    <%end%>
+  <% if user_signed_in? %>
+    <div id="map" style="width: 100%; height: 350px;"></div>
+    <script src="http://maps.google.com/maps/api/js?sensor=false"
+            type="text/javascript"></script>
+    <script type="text/javascript">
+      var locations = [];
+      <%puts(@positions.inspect)%>
+      <% @positions.each do |pos|%>
+        <%puts("---------------")%>
+        <%puts(pos)%>
+        locations.push(["<%= Patient.name  %>", <%=pos.latitude%>, <%=pos.longitude%>]);
+      <% end %>
+        var posLat = <%=begin @positions.last.latitude rescue -11.202692 end%>;
+        var posLgt = <%=begin @positions.last.longitude rescue 17.873886999999968 end%>;
+        var zoom = 9;
+
+        if (locations == ""){
+           zoom = 5;
+         }
+
+      var map = new google.maps.Map(document.getElementById('map'), {
+        zoom: zoom,
+        center: new google.maps.LatLng(posLat, posLgt),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      });
+      var infowindow = new google.maps.InfoWindow();
+      var red_marker = "<%= asset_path 'red_marker.png'%>";
+      var blue_marker = "<%= asset_path 'blue_marker.png'%>";
+      var green_marker = "<%= asset_path 'green_marker.png'%>";
+      var orange_marker = "<%= asset_path 'orange_marker.png'%>";
+
+      var marker, i;
+      for (i = 0; i < locations.length; i++) {
+
+        marker = new google.maps.Marker({
+          position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+          icon: blue_marker,
+          map: map
+        });
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+          return function() {
+            infowindow.setContent(locations[i][0]);
+            infowindow.open(map, marker);
+          }
+        })(marker, i));
+
+      }
+    </script>
+<%end%>
+
 </p>

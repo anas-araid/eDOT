@@ -1,6 +1,3 @@
 <h2>Editing Report</h2>
 
 <%= render 'form', report: @report, redir_url:  patient_report_path, form_type: "Edit" %>
-
-<%= link_to 'Show', patient_report_url(@report.patient, @report) %> |
-<%= link_to 'Back', patient_reports_path %>

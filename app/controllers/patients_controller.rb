@@ -2,11 +2,11 @@ class PatientsController < ApplicationController
   #before_action :cleanup_pagination_params
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+
   before_action :set_health_centers, only: [:new, :edit, :create]
   before_action :set_users, only: [:new, :edit, :create, :index]
 
   has_scope :by_name, :by_surname, :by_address, :by_phone, :by_gender, :by_chw
-
 
   # GET /patients
   # GET /patients.json
@@ -24,6 +24,8 @@ class PatientsController < ApplicationController
   # GET /patients/1
   # GET /patients/1.json
   def show
+    @positions = Position.where(patient_id: @patient.id)
+    @reports = Report.where(patient_id: @patient.id)
   end
 
   # GET /patients/new
@@ -42,6 +44,9 @@ class PatientsController < ApplicationController
 
     respond_to do |format|
       if @patient.save
+        Position.create!(patient_id: @patient.id,
+        latitude: Geocoder.coordinates(@patient.address)[0] ,
+        longitude: Geocoder.coordinates(@patient.address)[1])
         format.html { redirect_to @patient, notice: 'Patient was successfully created.' }
         format.json { render :show, status: :created, location: @patient }
       else
@@ -56,6 +61,9 @@ class PatientsController < ApplicationController
   def update
     respond_to do |format|
       if @patient.update(patient_params)
+        @patient.positions.first.update(
+        latitude: Geocoder.coordinates(@patient.address)[0] ,
+        longitude: Geocoder.coordinates(@patient.address)[1])
         format.html { redirect_to @patient, notice: 'Patient was successfully updated.' }
         format.json { render :show, status: :ok, location: @patient }
       else

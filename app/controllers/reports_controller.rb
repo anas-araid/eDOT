@@ -1,7 +1,7 @@
 class ReportsController < ApplicationController
   before_action :set_patient
   before_action :set_report, only: [:show, :edit, :update, :destroy]
-  before_action :set_users, only: [:new, :edit, :create]
+  before_action :set_users, only: [:new, :edit, :update, :create]
   before_action :authenticate_user!
 
   # GET /reports
@@ -41,6 +41,9 @@ class ReportsController < ApplicationController
 
     respond_to do |format|
       if @report.save
+        @report.position=(Position.create!(patient_id: @report.patient_id,
+        latitude: Geocoder.coordinates(@report.address)[0] ,
+        longitude: Geocoder.coordinates(@report.address)[1]))
         format.html { redirect_to patient_report_url(@report.patient, @report), notice: 'Report was successfully created.' }
         format.json { render :show, status: :created, location: @report }
       else
@@ -55,6 +58,9 @@ class ReportsController < ApplicationController
   def update
     respond_to do |format|
       if @report.update(report_params)
+        @report.position.update(
+        latitude: Geocoder.coordinates(@report.address)[0] ,
+        longitude: Geocoder.coordinates(@report.address)[1])
         format.html { redirect_to patient_report_url(@report.patient, @report), notice: 'Report was successfully updated.' }
         format.json { render :show, status: :ok, location: @report }
       else
@@ -67,6 +73,7 @@ class ReportsController < ApplicationController
   # DELETE /reports/1
   # DELETE /reports/1.json
   def destroy
+    @report.position.destroy
     @report.destroy
     respond_to do |format|
       format.html { redirect_to patient_reports_url(@patient), notice: 'Report was successfully destroyed.' }
@@ -82,7 +89,7 @@ class ReportsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def report_params
-      pp = params.require(:report).permit(:patient_id, :user_id, :date, :health_status)
+      pp = params.require(:report).permit(:patient_id, :user_id, :date,:address, :health_status)
       pp[:patient_id] = @patient.id
       return pp
     end

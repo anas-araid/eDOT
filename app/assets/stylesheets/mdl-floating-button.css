@@ -25,6 +25,7 @@
   opacity: 0;
   font-size: 2em;
   margin-bottom: 0px;
+  z-index: 100;
 }
 .backdrop {
   position: fixed;
