@@ -43,9 +43,9 @@ class PatientsController < ApplicationController
 
     respond_to do |format|
       if @patient.save
-        Position.create!(patient_id: patient_id,
-        latitude: Geocoder.coordinates(@report.address)[0] ,
-        longitude: Geocoder.coordinates(@report.address)[1])
+        Position.create!(patient_id: @patient.id,
+        latitude: Geocoder.coordinates(@patient.address)[0] ,
+        longitude: Geocoder.coordinates(@patient.address)[1])
         format.html { redirect_to @patient, notice: 'Patient was successfully created.' }
         format.json { render :show, status: :created, location: @patient }
       else
@@ -60,6 +60,9 @@ class PatientsController < ApplicationController
   def update
     respond_to do |format|
       if @patient.update(patient_params)
+        @patient.positions.first.update(
+        latitude: Geocoder.coordinates(@patient.address)[0] ,
+        longitude: Geocoder.coordinates(@patient.address)[1])
         format.html { redirect_to @patient, notice: 'Patient was successfully updated.' }
         format.json { render :show, status: :ok, location: @patient }
       else
