@@ -1,5 +1,4 @@
 class PatientsController < ApplicationController
-  #before_action :cleanup_pagination_params
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
@@ -11,7 +10,7 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.json
   def index
-    puts "------->" + params.inspect
+    @visible=any_filters?
     @patients = apply_scopes(Patient).all
     if current_user.user_type=="doctor"
       @patients = @patients.where(health_center_id: current_user.health_center_id)
@@ -105,8 +104,14 @@ class PatientsController < ApplicationController
       @users = User.all.where(user_type: "chw")
     end
 
-    def cleanup_pagination_params
-      params[:by_chw] = params[:by_chw].to_i
+    def any_filters?
+      [:by_name, :by_surname, :by_address, :by_phone, :by_gender, :by_chw].each do |filter|
+        if (params[filter] != nil) and (params[filter]!="")
+          puts params[filter]
+          return true
+        end
+      end
+      return false
     end
 
 end

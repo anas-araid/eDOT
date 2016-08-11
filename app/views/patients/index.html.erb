@@ -1,6 +1,9 @@
 <h1>Patients</h1>
-
-<div id="filters">
+<% if @visible %>
+  <div id="filters" style="display:block;">
+<% else %>
+  <div id="filters" style="display:none;">
+<% end %>
   <%= render 'filter'%>
 </div>
 <div style = "overflow-x:auto;z-index:-1;">
@@ -30,7 +33,7 @@
 <br>
 
 <div class="backdrop"></div>
-<%= link_to "", :id => "floating-button-link",  :onclick => "toggle_filter_visibility('filters');return false;" do %>
+<%= link_to "", :id => "floating-button-link",  :onclick => "toggle_visibility('filters');return false;" do %>
   <div class="fab child mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-color--orange-500 mdl-color-text--cyan-50" data-subitem="2">
     <i class="material-icons">search</i>
   </div>
@@ -44,31 +47,3 @@
   <div class="fab mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50 bottom-right-fixed" id="masterfab">
     <i class="material-icons">settings</i>
   </div>
-<script>
-function toggle_filter_visibility(id) {
-
-   var e = document.getElementById(id);
-   if(e.style.display == 'block'){
-      e.style.display = 'none';
-   }else{
-      e.style.display = 'block';
-    }
-}
-
-function is_visible(id){
-  var e = document.getElementById(id);
-  window.alert(e);
-  window.alert(e.style.display)
-  if(e.style.display == 'block'){
-     return true;
-  }else{
-     return false;
-   }
-}
-
-$.ajax({
-        url : "",
-        type : "get",
-        data : { data_value:  is_visible('filters')}
-    });
-</script>

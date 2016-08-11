@@ -51,10 +51,15 @@
       <br>
 
     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select" >
-     <%= f.text_field :health_center_id, :class => "mdl-textfield__input", :value => "", :type => "text", :readonly => "", :id => "health_center", :tabIndex => "-1" %>
+      <% if current_user.health_center_id.nil? %>
+        <%= f.text_field :health_center_id, :class => "mdl-textfield__input", :value => "", :type => "text", :readonly => "", :id => "health_center", :tabIndex => "-1" %>
+      <% else %>
+      <%= f.text_field :health_center_id, :class => "mdl-textfield__input", :value => "#{current_user.health_center_id}. #{
+          @health_centers.find(current_user.health_center_id).name}", :type => "text", :readonly => "", :id => "health_center", :tabIndex => "-1" %>
+      <% end %>
        <label class="mdl-textfield__label" for="health_center">Health Center</label>
-
        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="health_center">
+         <li  class="mdl-menu__item"></li>
          <% @health_centers.each do |health_center| %>
            <li class="mdl-menu__item">
              <%= "#{health_center.id}. #{health_center.name}" %>
