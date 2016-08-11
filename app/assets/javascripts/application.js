@@ -25,3 +25,14 @@ function toggle_visibility(id) {
    else
       e.style.display = 'block';
 }
+
+function check_password_confirmation(password_confirmation_id, password_id) {
+    password_confirmation_input=document.getElementById(password_confirmation_id);
+    password_input=document.getElementById(password_id);
+    if (password_confirmation_input.value != password_input.value) {
+        password_confirmation_input.setCustomValidity('Password Must be Matching.');
+    } else {
+        // input is valid -- reset the error message
+        password_confirmation_input.setCustomValidity('');
+    }
+  }

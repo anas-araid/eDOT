@@ -8,16 +8,13 @@ class User < ApplicationRecord
   has_one :health_center
   has_many :reports
 
-  validates :user_type, presence: true
+  validates :user_type, :name, :surname, presence: true
 
   validate :correct_type
   validate :health_center_exists
 
   def correct_type
     tt=%w(doctor chw)
-    puts tt
-    puts user_type
-    puts tt.include? user_type
     if tt.include? user_type
       return true
     else
