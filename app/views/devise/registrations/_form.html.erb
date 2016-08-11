@@ -50,7 +50,7 @@
       <br>
       <br>
 
-    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select" >
+    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select" style="visiblitty:display">
       <% if not user_signed_in? or current_user.health_center_id.nil? %>
         <%= f.text_field :health_center_id, :class => "mdl-textfield__input", :value => "", :type => "text", :readonly => "", :id => "health_center", :tabIndex => "-1" %>
       <% else %>

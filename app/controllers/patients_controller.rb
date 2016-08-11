@@ -107,7 +107,6 @@ class PatientsController < ApplicationController
     def any_filters?
       [:by_name, :by_surname, :by_address, :by_phone, :by_gender, :by_chw].each do |filter|
         if (params[filter] != nil) and (params[filter]!="")
-          puts params[filter]
           return true
         end
       end
