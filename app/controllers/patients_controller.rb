@@ -11,6 +11,7 @@ class PatientsController < ApplicationController
   # GET /patients
   # GET /patients.json
   def index
+    puts "------->" + params.inspect
     @patients = apply_scopes(Patient).all
     if current_user.user_type=="doctor"
       @patients = @patients.where(health_center_id: current_user.health_center_id)
