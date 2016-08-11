@@ -17,11 +17,8 @@
             type="text/javascript"></script>
     <script type="text/javascript">
       var locations = [];
-      <%puts(@positions.inspect)%>
       <% @positions.each do |pos|%>
-        <%puts("---------------")%>
-        <%puts(pos)%>
-        locations.push(["<%= Patient.name  %>", <%=pos.latitude%>, <%=pos.longitude%>]);
+        locations.push(["<%= pos.patient.name  %>", <%=pos.latitude%>, <%=pos.longitude%>]);
       <% end %>
         var posLat = <%=begin @positions.last.latitude rescue -11.202692 end%>;
         var posLgt = <%=begin @positions.last.longitude rescue 17.873886999999968 end%>;

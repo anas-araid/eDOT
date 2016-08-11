@@ -27,3 +27,38 @@
   <div class="fab mdl-button mdl-js-button mdl-button--fab mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50 bottom-right-fixed" id="masterfab">
     <i class="material-icons">settings</i>
   </div>
+
+<div>
+  <div id="map" style="width: 100%; height: 350px;"></div>
+  <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDDj1alSRsYrGfAFUwzo-mOMLtR9MTYCbg'></script>
+  <script type="text/javascript">
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 9,
+      center: new google.maps.LatLng(<%=Geocoder.coordinates(@health_center.address)[0]%>, <%=Geocoder.coordinates(@health_center.address)[1]%>),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    var infowindow = new google.maps.InfoWindow();
+    var hospital_marker = "<%= asset_path 'hospital_marker.png'%>";
+
+
+    var infoWindow = new google.maps.InfoWindow();
+    var myLatLng = {lat: <%=Geocoder.coordinates(@health_center.address)[0]%>, lng: <%=Geocoder.coordinates(@health_center.address)[1]%>}
+    var PatMarker = new google.maps.Marker({
+      position: myLatLng,
+      icon: hospital_marker,
+      animation: google.maps.Animation.BOUNCE,
+      map: map
+    });
+
+
+  var infoWindow = new google.maps.InfoWindow();
+  var windowLatLng = new google.maps.LatLng(43.25,-68.03);
+  infoWindow.setOptions({
+      content: "<%=@health_center.name%>",
+      position: myLatLng,
+  });
+  infoWindow.open(map, PatMarker);
+
+  </script>
+</div>
