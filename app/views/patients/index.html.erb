@@ -1,6 +1,9 @@
 <h1>Patients</h1>
-
-<div id="filters">
+<% if @visible %>
+  <div id="filters" style="display:block;">
+<% else %>
+  <div id="filters" style="display:none;">
+<% end %>
   <%= render 'filter'%>
 </div>
 <div style = "overflow-x:auto;z-index:-1;">
