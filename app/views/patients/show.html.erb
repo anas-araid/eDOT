@@ -72,7 +72,7 @@
               position: myLatLng,
           });
           infoWindow.open(map, marker);
-        } else {
+        } else if (i!=0){
 
         marker = new google.maps.Marker({
           position: new google.maps.LatLng(locations[i][1], locations[i][2]),
@@ -81,7 +81,7 @@
         });
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
           return function() {
-            infowindow.setContent(locations[i][0]);
+            infowindow.setContent(i.toString());
             infowindow.open(map, marker);
           }
         })(marker, i));
