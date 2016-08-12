@@ -1,7 +1,5 @@
 <%= form_for(report, url: redir_url) do |f| %>
   <% if report.errors.any? %>
-
-
       <% report.errors.full_messages.each do |message| %>
       <script>
         alertify.error("<%= message.html_safe %>");

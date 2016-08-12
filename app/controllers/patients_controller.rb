@@ -2,8 +2,8 @@ class PatientsController < ApplicationController
   before_action :set_patient, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
-  before_action :set_health_centers, only: [:new, :edit, :create]
-  before_action :set_users, only: [:new, :edit, :create, :index]
+  before_action :set_health_centers, only: [:new, :edit, :update, :create]
+  before_action :set_users, only: [:new, :edit, :update, :create, :index]
 
   has_scope :by_name, :by_surname, :by_address, :by_phone, :by_gender, :by_chw
 

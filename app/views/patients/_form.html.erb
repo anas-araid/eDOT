@@ -1,15 +1,10 @@
 <%= form_for(patient) do |f| %>
 <% if patient.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
-    <ul>
-    <% patient.errors.full_messages.each do |message| %>
+      <% patient.errors.full_messages.each do |message| %>
     <script>
       alertify.error("<%= message.html_safe %>");
     </script>
     <% end %>
-    </ul>
-  </div>
 <% end %>
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
     <%= f.text_field :name, :class => "mdl-textfield__input", :id => "name", :pattern=>"[A-Z,a-z,\s]+", :required => ""%>

@@ -1,12 +1,10 @@
 <%= form_for(health_center) do |f| %>
   <% if health_center.errors.any? %>
-
       <% health_center.errors.full_messages.each do |message| %>
         <script>
           alertify.error("<%= message.html_safe %>");
         </script>
       <% end %>
-
   <% end %>
 
 
