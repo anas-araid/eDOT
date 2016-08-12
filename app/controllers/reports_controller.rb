@@ -27,7 +27,6 @@ class ReportsController < ApplicationController
   # GET /reports/new
   def new
     @report = Report.new
-    #puts @report.inspect
   end
 
   # GET /reports/1/edit
