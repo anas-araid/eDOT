@@ -16,7 +16,7 @@ class Patient < ApplicationRecord
 
   def valid_address
     if Geocoder.search(address).empty?
-      errors.add(:address, "doesn't seem to be a valid address")
+      errors.add(:address, "doesn\'t seem to be a valid address")
     end
     !Geocoder.search(address).empty?
   end
