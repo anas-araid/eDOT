@@ -3,7 +3,7 @@ class Patient < ApplicationRecord
   belongs_to :health_center
   has_many :reports
   has_many :positions
-  validates :name, :surname, :gender, :user_id, :health_center_id, :birthdate, presence:true
+  validates :name, :surname, :gender, :user_id, :health_center_id, :birthdate, :address, presence:true
   validates :phone, :phone_number => {:format => /^[\d-]*$/}
   validate :valid_address
 

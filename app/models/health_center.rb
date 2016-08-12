@@ -2,7 +2,7 @@ class HealthCenter < ApplicationRecord
   has_many :users
   has_many :patients
 
-  validates :name, presence:true
+  validates :name, :address, presence:true
   validates :phone, :phone_number => {:format => /^[\d-]*$/}
   validate :valid_address
 
