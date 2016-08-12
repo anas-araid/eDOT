@@ -98,6 +98,6 @@ class ReportsController < ApplicationController
     end
 
     def set_users
-      @users = User.all.where(user_type: "chw")
+      @users = User.all
     end
 end
