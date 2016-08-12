@@ -3,7 +3,7 @@ class Patient < ApplicationRecord
   belongs_to :health_center
   has_many :reports
   has_many :positions
-  validates :name, :surname, :gender, :birthdate, presence:true
+  validates :name, :surname, :gender, :user_id, :health_center_id, :birthdate, presence:true
   validates :phone, :phone_number => {:format => /^[\d-]*$/}
   validate :valid_address
 
@@ -19,6 +19,5 @@ class Patient < ApplicationRecord
       errors.add(:address, "doesn't seem to be a valid address")
     end
     !Geocoder.search(address).empty?
-
   end
 end
