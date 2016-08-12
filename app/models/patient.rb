@@ -5,6 +5,7 @@ class Patient < ApplicationRecord
   has_many :positions
   validates :name, :surname, :gender, :birthdate, presence:true
   validates :phone, :phone_number => {:format => /^[\d-]*$/}
+  validate :valid_address
 
   scope :by_name, -> (name) { where("name like ?", "%#{name}%") }
   scope :by_surname, -> (surname) { where("surname like ?", "%#{surname}%") }
@@ -12,7 +13,6 @@ class Patient < ApplicationRecord
   scope :by_phone, -> (phone) { where("phone like ?", "%#{phone}%") }
   scope :by_gender, -> (gender) { where(gender: gender) }
   scope :by_chw, -> (chw) { where(user_id: chw) }
-  #validate :valid_address
 
   def valid_address
     if Geocoder.search(address).empty?

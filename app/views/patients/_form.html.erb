@@ -1,26 +1,16 @@
 <%= form_for(patient) do |f| %>
-
-  <% if patient.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
-
-      <ul>
-      <% patient.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <%= f.text_field :name, :class => "mdl-textfield__input", :id => "name"%>
-    <%= f.label :name, :class => "mdl-textfield__label", :for => "name"%>
+    <%= f.text_field :name, :class => "mdl-textfield__input", :id => "name", :pattern=>"[A-Z,a-z,\s]+", :required => ""%>
+    <%= f.label :name, 'Name*', :class => "mdl-textfield__label", :for => "name"%>
+    <span class="mdl-textfield__error">Please insert a valid name</span>
   </div>
+
   <br>
 
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-    <%= f.text_field :surname, :class => "mdl-textfield__input", :id => "surname"%>
+    <%= f.text_field :surname, :class => "mdl-textfield__input", :id => "surname", :pattern=>"[A-Z,a-z,\s]+", :required => ""%>
     <%= f.label :surname, :class => "mdl-textfield__label", :for => "surname"%>
+    <span class="mdl-textfield__error">Please insert a valid surname</span>
   </div>
 
   <div class="field">
@@ -30,7 +20,8 @@
 
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
     <%= f.number_field :phone, :class => "mdl-textfield__input", :id => "phone"%>
-    <%= f.label :phone, :class => "mdl-textfield__label", :for => "phone"%>
+    <%= f.label :phone, "Phone number", :class => "mdl-textfield__label", :for => "phone"%>
+    <span class="mdl-textfield__error">Please insert a valid phone number</span>
   </div>
 
   <br>
@@ -56,8 +47,10 @@
   <br>
 
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select" >
-   <%= f.text_field :health_center_id, :class => "mdl-textfield__input", :value => ("#{@user_health_center.id}. #{@user_health_center.name}" if not @user_health_center.nil?), :type => "text", :readonly => "", :id => "health_center", :tabIndex => "-1" %>
-     <label class="mdl-textfield__label" for="health_center">Health Center</label>
+   <%= f.text_field :health_center_id, :class => "mdl-textfield__input",
+       :value => ("#{@user_health_center.id}. #{@user_health_center.name}" if not @user_health_center.nil?),
+       :type => "text", :id => "health_center", :tabIndex => "-1", required: "", readonly: "" %>
+     <label class="mdl-textfield__label" for="health_center">Health Center<font size="3" color="teal">*</font></label>
 
      <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="health_center">
        <% @health_centers.each do |health_center| %>
@@ -66,6 +59,7 @@
          </li>
        <% end %>
      </ul>
+
   </div>
   <%= link_to new_health_center_path, :class =>"mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored mdl-color--teal-400 mdl-color-text--cyan-50", :id => "add_button" do  %>
    <i class="material-icons">add</i>
@@ -74,8 +68,14 @@
   <br>
 
   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select" >
-   <%= f.text_field :user_id, :class => "mdl-textfield__input", :value => ("#{current_user.id}. #{current_user.name} #{current_user.surname}" unless current_user.user_type=="doctor"), :type => "text", :readonly => "", :id => "user", :tabIndex => "-1" %>
-     <label class="mdl-textfield__label" for="user">Cared by</label>
+    <% if current_user.user_type=="doctor"%>
+   <%= f.text_field :user_id, :class => "mdl-textfield__input",
+       :value => "", :type => "text", :readonly => "", :id => "user", :tabIndex => "-1", required: "" %>
+  <% else%> <%= f.text_field :user_id, :class => "mdl-textfield__input",
+      :value => ("#{current_user.id}. #{current_user.name} #{current_user.surname}"),
+      :type => "text", :readonly => "", :id => "user", :tabIndex => "-1", required: "" %>
+  <%end %>
+     <label class="mdl-textfield__label" for="user">Cared by<font size="3" color="teal">*</font></label>
 
      <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="user">
        <% @users.each do |user| %>
@@ -97,8 +97,6 @@
         <i class="material-icons">send</i>
       <% end %>
     </div>
-
-
 
 
     <% if form_type=="Edit" %>
